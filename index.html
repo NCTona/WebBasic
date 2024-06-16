@@ -49,33 +49,40 @@ FONT SIZE SYSTEM (px)
 
 <body>
     <div class="main">
+
+        <!-- Header -->
         <div id="header">
-           <ul>
-            <li class="menu-icon">
-                <ul id="nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#classes">Classes</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <div class="search-button">
-                        <a class="ti-github"></a>
-                    </div>
-                </ul>
-            </li>
-            
-           </ul>
-            
+
+            <!-- Navigation -->
+            <ul>
+                <li>
+                    <ul id="nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#classes">Classes</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </div>
 
+        <!-- Hero Section -->
         <div id="slider">
+
+            <!-- Background under Hero Section -->
             <div class="slider-before"></div>
+
+            <!-- Hero section title -->
             <div class="slider-title">
                 <h2 class="title-slider">English </h2>
                 <p class="description"><i>“Believe you can and you're halfway there.”</i></p>
             </div>
+
+            <!-- Button display form -->
             <button class="button-slider" id="button-slider"><a id="sign-in">Get started</a></button>
 
+            <!-- Form sign in -->
             <div class="sign-in-form">
                 <form id="form" action="">
                     <h1>Welcome</h1>
@@ -97,7 +104,10 @@ FONT SIZE SYSTEM (px)
 
         </div>
 
+        <!-- Content of page -->
         <div id="content">
+
+            <!-- Page linked to courses -->
             <div class="courses" id="courses">
                 <div class="side-bar">
                     C <br>
@@ -125,6 +135,8 @@ FONT SIZE SYSTEM (px)
                         quaerat natus ad tenetur, consectetur dolore blanditiis, dolorum ratione minima.</p>
                 </div>
             </div>
+
+            <!-- Page linked to classes -->
             <div class="classes" id="classes">
                 <div class="side-bar">
                     C <br>
@@ -152,6 +164,8 @@ FONT SIZE SYSTEM (px)
                         nisi, amet, assumenda quibusdam quos, quam architecto dicta cum!</div>
                 </div>
             </div>
+
+            <!-- Page linked to contact -->
             <div class="contact" id="contact">
                 <div class="side-bar">
                     C <br>
@@ -181,6 +195,7 @@ FONT SIZE SYSTEM (px)
             </div>
         </div>
 
+        <!-- Footer -->
         <div id="footer">
             <div>
                 Powered by Tona
@@ -188,7 +203,11 @@ FONT SIZE SYSTEM (px)
             </div>
         </div>
     </div>
+
+    <!-- Display form when click button -->
     <script src="./js/form_display.js"></script>
+
+    <!-- Validator -->
     <script src="./js/validator.js"></script>
     <script>
         display_form();
@@ -198,9 +217,9 @@ FONT SIZE SYSTEM (px)
                 Validator.isUsername("#username"),
                 Validator.isPassword("#password"),
             ],
-            onSubmit: function(data){
-            console.log(data);
-        }
+            onSubmit: function (data) {
+                console.log(data);
+            }
         });
     </script>
 </body>
