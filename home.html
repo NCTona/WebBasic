@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <script type=”text/JavaScript”>
+        function killCopy(e){
+            return false
+        }
+        function reEnable(){
+            return true
+        }
+        document.onselectstart=new Function (“return false”)
+            if (window.sidebar){
+            document.onmousedown=killCopy
+            document.onclick=reEnable
+        }
+        </script>
+    <title>Triplingo</title>
+</head>
+
+<!-- SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/ -->
+
+<body>
+    <div class="main">
+        <div id="header">
+           <ul>
+            <li class="menu-icon">
+                <ul id="nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <div class="search-button">
+                        <a class="ti-github"></a>
+                    </div>
+                </ul>
+            </li>
+            
+           </ul>
+            
+
+        </div>
+
+        <div id="slider">
+            <div class="slider-before"></div>
+            <div class="slider-title">
+                <h2 class="title-slider">English </h2>
+                <p class="description"><i>“Believe you can and you're halfway there.”</i></p>
+            </div>
+            <button class="button-slider" id="button-slider"><a id="sign-in">Get started</a></button>
+
+            <div class="sign-in-form">
+                <form id="form" action="">
+                    <h1>Sign in</h1>
+                    <label for="">Username</label>
+
+                    <div class="form-username">
+                        <input id="username" class="form-input" type="text"> <br>
+                        <div class="alert"></div>
+                    </div>
+                    <label for="">Password</label>
+
+                    <div class="form-password">
+                        <input id="password" class="form-input" type="password"> <br>
+                        <div class="alert"></div>
+                    </div>
+                    <a class="form-button" href="index.html">Sign-in</a>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="content">
+            <div class="courses" id="courses">
+                <div class="side-bar">
+                    C <br>
+                    O <br>
+                    U <br>
+                    R <br>
+                    S <br>
+                    E <br>
+                    S <br>
+                </div>
+                <div class="heading-content">
+                    <h1>Reach your dreams</h1>
+                    <p class="description-content"><i>"Spread your own wings and fly!!!"</i></p>
+                    <div class="icon-courses"><i class="ti-pencil-alt"></i></div>
+                </div>
+                <div class="courses-content">
+                    <p class="courses-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel
+                        inventore nemo voluptates repellendus rem esse quisquam fuga, eveniet obcaecati fugiat, nulla
+                        ab. Nulla perspiciatis delectus alias laborum veritatis ipsum corrupti!</p>
+                    <p class="courses-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+                        voluptas praesentium alias aperiam beatae natus nobis enim at voluptatem cupiditate, doloribus
+                        dolorum neque debitis id aliquam magnam explicabo iusto mollitia?</p>
+                    <p class="courses-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam
+                        delectus, facilis obcaecati eos soluta molestiae provident. Laboriosam repellendus nobis tempora
+                        quaerat natus ad tenetur, consectetur dolore blanditiis, dolorum ratione minima.</p>
+                </div>
+            </div>
+            <div class="classes" id="classes">
+                <div class="side-bar">
+                    C <br>
+                    L <br>
+                    A <br>
+                    S <br>
+                    S <br>
+                    E <br>
+                    S <br>
+                </div>
+                <div class="heading-content">
+                    <h1>Appropriate destination</h1>
+                    <p class="description-content"><i>"You only live once, but if you do it right, once is enough."</i>
+                    </p>
+                </div>
+                <div class="classes-list">
+                    <div class="classes-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam magnam
+                        totam vitae porro laboriosam reiciendis nobis corrupti eligendi, ipsum praesentium! Sunt vero,
+                        voluptatem eius facere cum eos nihil natus fuga?</div>
+                    <div class="classes-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, facilis
+                        recusandae sunt architecto nulla optio tempore corporis laboriosam atque dolorem voluptatibus
+                        vel esse, odit numquam, perferendis ipsam quibusdam non eius.</div>
+                    <div class="classes-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae amet
+                        inventore ipsam corrupti perferendis? Quasi asperiores fugit corporis repudiandae autem velit
+                        nisi, amet, assumenda quibusdam quos, quam architecto dicta cum!</div>
+                </div>
+            </div>
+            <div class="contact" id="contact">
+                <div class="side-bar">
+                    C <br>
+                    O <br>
+                    N <br>
+                    T <br>
+                    A <br>
+                    C <br>
+                    T <br>
+                </div>
+                <div class="heading-content">
+                    <h1>Professional</h1>
+                    <p class="description-content"><i>“Professional is not a label you give yourself - it's a
+                            description you hope others will apply to you.”</i></p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-detail">
+                        Phone: 0987654321
+                    </div>
+                    <div class="contact-detail">
+                        Email: nctona@gmail.com
+                    </div>
+                    <div class="contact-detail">
+                        Address: HaNoi, VN
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div>
+                Powered by Tona
+                <i class="ti-microsoft-alt" style="margin-left: 8px;"></i>
+            </div>
+        </div>
+    </div>
+    <script src="./form_display.js"></script>
+    <script src="./validator.js"></script>
+    <script>
+        display_form();
+        Validator({
+            form: "#form",
+            rules: [
+                Validator.isUsername("#username"),
+                Validator.isPassword("#password"),
+            ],
+            onSubmit: function(data){
+            console.log(data);
+        }
+        });
+    </script>
+</body>
+
+</html>
