@@ -13,6 +13,7 @@
       { "id": "11", "name": "Nguyễn Cảnh Toàn", "class": 3.1, "date": "19/06/2003","age": "21", "parent": "Nguyễn Quang Toản"},
       { "id": "12", "name": "Nguyễn Cảnh Toàn", "class": 3.1, "date": "19/06/2003","age": "21", "parent": "Nguyễn Quang Toản"},
       { "id": "13", "name": "Nguyễn Cảnh Toàn", "class": 3.1, "date": "19/06/2003","age": "21", "parent": "Nguyễn Quang Toản"},
-      { "id": "14", "name": "Nguyễn Cảnh Toàn", "class": 3.1, "date": "19/06/2003","age": "21", "parent": "Nguyễn Quang Toản"}
+      { "id": "14", "name": "Nguyễn Cảnh Tiền", "class": 3.1, "date": "19/06/2003","age": "21", "parent": "Nguyễn Quang Toản"},
+      { "id": "15", "name": "Nguyễn Cảnh Tiến", "class": 3.1, "date": "19/06/2003","age": "21", "parent": "Nguyễn Quang Toản"}
     ]
   }
