@@ -36,7 +36,7 @@ fetch(apiServer)
         src1();
         function src2() {
             var src2 = document.querySelector("#scr-2")
-            src2.setAttribute("src", "vendor/bootstrap/js/bootstrap.bundle.min.js")
+            src2.setAttribute("src", "js/demo/datatables-demo.js")
         }
         src2();
         function src3() {
@@ -44,11 +44,11 @@ fetch(apiServer)
             src3.setAttribute("src", "vendor/jquery-easing/jquery.easing.min.js")
         }
         src3();
-        // function src4() {
-        //     var src4 = document.querySelector("#scr-4")
-        //     src4.setAttribute("src", "js/sb-admin-2.min.js")
-        // }
-        // src4();
+        function src4() {
+            var src4 = document.querySelector("#scr-4")
+            src4.setAttribute("src", "js/sb-admin-2.min.js")
+        }
+        src4();
         function src5() {
             var src5 = document.querySelector("#scr-5")
             src5.setAttribute("src", "vendor/datatables/jquery.dataTables.min.js")
@@ -56,12 +56,13 @@ fetch(apiServer)
         src5();
         function src6() {
             var src6 = document.querySelector("#scr-6")
-            src6.setAttribute("src", "vendor/datatables/dataTables.bootstrap4.min.js")
+            src6.setAttribute("src", "vendor/bootstrap/js/bootstrap.bundle.min.js")
+            
         }
         src6();
         function src7() {
             var src7 = document.querySelector("#scr-7")
-            src7.setAttribute("src", "js/demo/datatables-demo.js")
+            src7.setAttribute("src", "vendor/datatables/dataTables.bootstrap4.min.js")
         }
         src7();
     })
