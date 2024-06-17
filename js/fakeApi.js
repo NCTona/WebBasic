@@ -44,11 +44,11 @@ fetch(apiServer)
             src3.setAttribute("src", "vendor/jquery-easing/jquery.easing.min.js")
         }
         src3();
-        function src4() {
-            var src4 = document.querySelector("#scr-4")
-            src4.setAttribute("src", "js/sb-admin-2.min.js")
-        }
-        src4();
+        // function src4() {
+        //     var src4 = document.querySelector("#scr-4")
+        //     src4.setAttribute("src", "js/sb-admin-2.min.js")
+        // }
+        // src4();
         function src5() {
             var src5 = document.querySelector("#scr-5")
             src5.setAttribute("src", "vendor/datatables/jquery.dataTables.min.js")
