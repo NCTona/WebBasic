@@ -10,6 +10,7 @@ function Validator(options) {
             var inputElement = formElement.querySelector(rule.selector);
             var errorElement = inputElement.parentElement.querySelector('.alert');
             var input = inputElement.parentElement.querySelector('.form-input');
+            var button = document.querySelector('.form-button')
 
             if (inputElement) {
                 inputElement.onblur = function () {
@@ -30,10 +31,9 @@ function Validator(options) {
 
             }
 
-            formElement.onsubmit = function (e) {
+            button.onclick = function (e) {
                 var isValid = true;
 
-                e.preventDefault();
                 options.rules.forEach(function (rule) {
                     var inputElement = formElement.querySelector(rule.selector);
                     var errorElement = inputElement.parentElement.querySelector('.alert');
@@ -56,6 +56,7 @@ function Validator(options) {
                         username: formElement.querySelector('#username').value,
                         password: formElement.querySelector('#password').value,
                     })
+                    button.setAttribute("href", "./admin.html")
                 }
             }
         })
