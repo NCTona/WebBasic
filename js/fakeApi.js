@@ -1,7 +1,7 @@
-var apiServer = 'http://localhost:3000/Student'
+var apiStudent = 'http://localhost:3000/Student'
 
 
-fetch(apiServer)
+fetch(apiStudent)
     .then(function (reponse) {
         return reponse.json();
     })
@@ -41,7 +41,6 @@ fetch(apiServer)
         src4.setAttribute("src", "js/sb-admin-2.min.js")
         src5.setAttribute("src", "vendor/datatables/jquery.dataTables.min.js")
         src6.setAttribute("src", "vendor/bootstrap/js/bootstrap.bundle.min.js")
-        
     })
     
     .catch(function (err) {

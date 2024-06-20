@@ -51,21 +51,44 @@ function Validator(options) {
                     }
 
                 })
-                if(isValid){
-                    options.onSubmit({
-                        username: formElement.querySelector('#username').value,
-                        password: formElement.querySelector('#password').value,
-                    })
-                    button.setAttribute("href", "./admin.html")
+                if (isValid) {
+                    options.onSubmit(function () {
+                        var apiAdmin = 'http://localhost:3000/Admin'
+                        fetch(apiAdmin)
+
+                            .then(function (reponse) {
+                                return reponse.json();
+                            })
+
+                            .then(function (admin) {
+                                console.log(typeof formElement.querySelector('#username').value);
+                                console.log(formElement.querySelector('#username').value === admin[0].username)
+                                if (formElement.querySelector('#username').value === admin[0].username && formElement.querySelector('#password').value === admin[0].password) {
+                                    setTimeout(function () {
+                                        window.location = "./admin.html"
+                                    }, 1600)
+                                    Swal.fire({
+                                        position: "center",
+                                        icon: "success",
+                                        title: "Sign in success",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                      });
+                                } else {
+                                    errorElement.innerText = "(*)Tài khoản hoặc mật khẩu không đúng";
+                                }
+                            })
+                    }
+
+                    )
+
+
                 }
             }
         })
 
     };
 }
-
-
-
 
 Validator.isUsername = function (selector) {
     return {
