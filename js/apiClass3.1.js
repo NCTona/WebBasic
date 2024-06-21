@@ -1,4 +1,4 @@
-var apiStudent = 'http://localhost:3000/Student'
+var apiStudent = 'http://localhost:3000/Class3.1'
 
 
 fetch(apiStudent)
@@ -42,7 +42,7 @@ fetch(apiStudent)
         src5.setAttribute("src", "vendor/datatables/jquery.dataTables.min.js")
         src6.setAttribute("src", "vendor/bootstrap/js/bootstrap.bundle.min.js")
     })
-    
+
     .catch(function (err) {
         var src1 = document.querySelector("#scr-1")
         var src2 = document.querySelector("#scr-2")
@@ -57,8 +57,8 @@ fetch(apiStudent)
         src5.setAttribute("src", "vendor/datatables/jquery.dataTables.min.js")
         src6.setAttribute("src", "vendor/bootstrap/js/bootstrap.bundle.min.js")
     })
-    
-    .finally(function(){
+
+    .finally(function () {
         var src7 = document.querySelector("#scr-7")
         src7.setAttribute("src", "vendor/datatables/dataTables.bootstrap4.min.js")
     })
