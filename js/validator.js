@@ -65,7 +65,7 @@ function Validator(options) {
                                 console.log(formElement.querySelector('#username').value === admin[0].username)
                                 if (formElement.querySelector('#username').value === admin[0].username && formElement.querySelector('#password').value === admin[0].password) {
                                     setTimeout(function () {
-                                        window.location = "./admin.html"
+                                        window.location.href = "./admin_page/dashboard.html"
                                     }, 1600)
                                     Swal.fire({
                                         position: "center",
@@ -74,15 +74,13 @@ function Validator(options) {
                                         showConfirmButton: false,
                                         timer: 1500
                                       });
+                                      
                                 } else {
                                     errorElement.innerText = "(*)Tài khoản hoặc mật khẩu không đúng";
                                 }
                             })
                     }
-
                     )
-
-
                 }
             }
         })

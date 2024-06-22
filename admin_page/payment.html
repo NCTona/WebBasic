@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="admin.html">
+                <a class="nav-link" href="dashboard.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -51,33 +51,44 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Classes</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Grade 3</h6>
-                        <a class="collapse-item" href="Class3.1.html">Class 3.1</a>
-                        <a class="collapse-item" href="Class3.2.html">Class 3.2</a>
-                        <a class="collapse-item" href="Class3.3.html">Class 3.3</a>
-                    </div>
+           <!-- Nav Item - Grade Collapse Menu -->
+           <li id="grade" class="nav-item">
+            <a id="grade-item" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-school"></i>
+                <span>Grade</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Grade 3</h6>
+                    <a class="collapse-item" href="grade-1.html">Grade 1</a>
+                    <a class="collapse-item" href="grade-2.html">Grade 2</a>
+                    <a class="collapse-item" href="grade-3.html">Grade 3</a>
                 </div>
+            </div>
+        </li>
+
+            <!-- Nav Item - Salary -->
+            <li class="nav-item">
+                <a class="nav-link" href="salary.html">
+                    <i class="fas fa-fw fa-money-bill "></i>
+                    <span>Salary</span></a>
             </li>
+
+            <!-- Nav Item - Payment -->
+            <li class="nav-item active">
+                <a class="nav-link" href="payment.html">
+                    <i class="fas fa-fw fa-credit-card "></i>
+                    <span>Payment</span></a>
+            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
             <!-- Nav Item - Charts -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
@@ -137,7 +148,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" id="logout" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -257,7 +268,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
+                    <a class="btn btn-primary" id="btn-logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -280,6 +291,15 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
+
+    <!-- Dropdown user-->
+    <script src="js/dropdown-user.js"></script>
+
+    <!-- Logout alert -->
+    <script src="js/logout.js"></script>
+
+     <!-- Grade active -->
+     <script src="js/nav-collapse.js"></script>
 
 </body>
 

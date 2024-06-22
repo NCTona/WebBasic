@@ -29,8 +29,6 @@
 
 <body id="page-top">
 
-
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -50,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="admin.html">
+                <a class="nav-link" href="dashboard.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -58,42 +56,40 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-           
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            <li id="grade" class="nav-item active">
+                <a id="grade-item" class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                     aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <i class="fas fa-fw fa-school"></i>
+                    <span>Grade</span>
                 </a>
                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Grade 3</h6>
-                        <a class="collapse-item" href="class3.1.html">Class 3.1</a>
-                        <a class="collapse-item active" href="class3.2.html">Class 3.2</a>
-                        <a class="collapse-item" href="class3.3.html">Class 3.3</a>
+                        <a class="collapse-item" href="grade-1.html">Grade 1</a>
+                        <a class="collapse-item" href="grade-2.html">Grade 2</a>
+                        <a class="collapse-item active" href="grade-3.html">Grade 3</a>
                     </div>
                 </div>
             </li>
 
+            <!-- Nav Item - Salary -->
+            <li class="nav-item">
+                <a class="nav-link" href="salary.html">
+                    <i class="fas fa-fw fa-money-bill "></i>
+                    <span>Salary</span></a>
+            </li>
 
-            
-             <!-- Divider -->
-             <hr class="sidebar-divider">
+            <!-- Nav Item - Payment -->
+            <li class="nav-item">
+                <a class="nav-link" href="payment.html">
+                    <i class="fas fa-fw fa-credit-card "></i>
+                    <span>Payment</span></a>
+            </li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -101,6 +97,7 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -156,7 +153,8 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" id="logout" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -179,8 +177,20 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <div class="card-header py-3"
+                            style="display: flex; justify-content: space-between; align-items: center;">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables
+                                <select name="Class" id="select-class"
+                                    style="border-radius: 4px; color: rgb(85, 85, 85); padding: 8px 12px; margin-left: 12px;">
+                                    <option value="1">Class 3.1</option>
+                                    <option value="2">Class 3.2</option>
+                                    <option value="3">Class 3.3</option>
+                                </select>
+                            </h6>
+
+                            <button class="btn-add"
+                                style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; padding: 8px;">Add
+                                student</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -244,23 +254,28 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
+                    <a class="btn btn-primary" id="btn-logout">Logout</a>
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
     <!-- Insert frequently -->
-    <script src="./js/apiClass3.2.js"></script>
-    <script id="scr-1"></script>
-    <script id="scr-2"></script>
-    <script id="scr-3"></script>
-    <script id="scr-4"></script>
-    <script id="scr-5"></script>
-    <script id="scr-6"></script>
-    <script id="scr-7"></script>
-    
+    <script src="js/fakeApi.js"></script>
+
+    <!-- Dropdown user-->
+    <script src="js/dropdown-user.js"></script>
+
+    <!-- Logout alert -->
+    <script src="js/logout.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Grade active -->
+    <script src="js/nav-collapse.js"></script>
+
 </body>
 
 </html>
