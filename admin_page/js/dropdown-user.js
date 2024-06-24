@@ -10,3 +10,4 @@ profile.onclick = function () {
         user_dropdown.setAttribute("style", "display: none")
     }
 }
+
