@@ -101,11 +101,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -186,7 +181,7 @@
                                         <option value="2">Class 2.2</option>
                                         <option value="3">Class 2.3</option>
                                     </select>
-                                    <button class="btn-add"
+                                    <button id="btn-add-student" class="btn-add"
                                         style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; height: 42px; width: 128px;">Add
                                         student</button>
                                 </div>
@@ -199,7 +194,7 @@
                                     <option value="2">2023</option>
                                     <option value="3">2024</option>
                                 </select>
-                                <button class="btn-add"
+                                <button id="btn-add-class" class="btn-add"
                                     style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; width: 128px; height: 42px;">Add
                                     class</button>
 
@@ -275,6 +270,93 @@
         </div>
     </div>
 
+    <!-- Add student Modal-->
+    <div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="form-add-student" style="display: flex; flex-direction: column; padding: 24px;">
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Họ và tên</label>
+                        <input id="fullName" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Giới tính</label>
+                        <input id="gender" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Tuổi</label>
+                        <input id="age" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Số điện thoại</label>
+                        <input id="phone" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Phụ huynh</label>
+                        <input id="parent" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert"
+                            style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
+                    </div>
+
+                    <div class="modal-footer" style="width: 100%; padding: 0;">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            style="margin: 0 12px;">Cancel</button>
+                        <a class="btn btn-primary" id="btn-accept-student" style="margin: 0;">Accept</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Class Modal-->
+    <div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="form-add-class" style="display: flex; flex-direction: column; padding: 24px;">
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Tên lớp</label>
+                        <input id="className" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)"> </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column">
+                        <label for="">Giáo viên</label>
+                        <input id="teacher" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)"> </span>
+                    </div>
+
+                    <div class="modal-footer" style="width: 100%; padding: 0;">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            style="margin: 0 12px;">Cancel</button>
+                        <a class="btn btn-primary" id="btn-accept-class" style="margin: 0;">Accept</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Insert frequently -->
     <script src="js/fakeApi.js"></script>
 
@@ -290,6 +372,35 @@
 
     <!-- Grade active -->
     <script src="js/nav-collapse.js"></script>
+
+    <!-- Add student -->
+    <script src="js/add-student.js"></script>
+
+    <!-- Add class -->
+    <script src="js/add-class.js"></script>
+
+    <!-- Validator -->
+    <script src="./js/validator.js"></script>
+    <script>
+        Validator({
+            formAddStudent: "#form-add-student",
+            formAddClass: "#form-add-class",
+            rules_student: [
+                Validator.isFullName("#fullName"),
+                Validator.isGender("#gender"),
+                Validator.isAge("#age"),
+                Validator.isPhone("#phone"),
+                Validator.isParent("#parent"),
+            ],
+            rules_class: [
+                Validator.isClassName("#className"),
+                Validator.isTeacher("#teacher"),
+            ],
+            onSubmit: function (data) {
+                data();
+            }
+        });
+    </script>
 
 </body>
 

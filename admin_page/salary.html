@@ -51,22 +51,22 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Grade Collapse Menu -->
-            <li id="grade" class="nav-item">
-                <a id="grade-item" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-school"></i>
-                    <span>Grade</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="grade-1.html">Grade 1</a>
-                        <a class="collapse-item" href="grade-2.html">Grade 2</a>
-                        <a class="collapse-item" href="grade-3.html">Grade 3</a>
-                    </div>
+           <!-- Nav Item - Grade Collapse Menu -->
+           <li id="grade" class="nav-item">
+            <a id="grade-item" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-school"></i>
+                <span>Grade</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="grade-1.html">Grade 1</a>
+                    <a class="collapse-item" href="grade-2.html">Grade 2</a>
+                    <a class="collapse-item" href="grade-3.html">Grade 3</a>
                 </div>
-            </li>
-
+            </div>
+        </li>
 
             <!-- Nav Item - Salary -->
             <li class="nav-item active">
@@ -95,11 +95,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -147,7 +142,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" id="logout" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -267,7 +262,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
+                    <a class="btn btn-primary" id="btn-logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -291,12 +286,18 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
 
-    <!-- Grade active -->
-    <script src="js/nav-collapse.js"></script>
+    <!-- Dropdown user-->
+    <script src="js/dropdown-user.js"></script>
+
+    <!-- Logout alert -->
+    <script src="js/logout.js"></script>
+
+     <!-- Grade active -->
+     <script src="js/nav-collapse.js"></script>
 
     <!-- Insert frequently -->
     <script src="js/fakeApi.js"></script>
-
+     
 </body>
 
 </html>

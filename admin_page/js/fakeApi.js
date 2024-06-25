@@ -13,7 +13,7 @@ var grade_page = document.querySelectorAll('.collapse-item')
 var select = document.querySelector('#select-class')
 
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < grade_page.length; i++) {
     if (grade_page[i].getAttribute("class") == "collapse-item active") {
         var grade_view = i + 1;
         var apiStudent = 'http://localhost:3000/Class' + grade_view + '.1'
@@ -46,6 +46,8 @@ for (var i = 0; i < 10; i++) {
                 document.querySelector("#tbody").innerHTML = html;
 
             })
+
+            
         select.onchange = function () {
             for (var i = 1; i <= 10; i++) {
                 if (select.value == i) {
