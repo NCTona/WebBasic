@@ -30,5 +30,5 @@ button_cancel[0].onclick = function () {
 }
 
 button_logout.onclick = function () {
-    window.location = "/index.html"
+    window.location = "/admin.html"
 }
