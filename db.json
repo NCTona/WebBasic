@@ -119,6 +119,9 @@
       "date": "19/06/2003",
       "age": "21",
       "parent": " Nguyễn Cảnh Toàn"
+    },
+    {
+      "id": "50c8"
     }
   ],
   "Class3.2": [
@@ -615,6 +618,12 @@
       "username": "nctona",
       "password": "tona",
       "id": "c909"
+    }
+  ],
+  "Teacher": [
+    {
+      "id": 1,
+      "name": "Nguyễn Đức Thuận"
     }
   ]
 }

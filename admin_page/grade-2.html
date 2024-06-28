@@ -138,14 +138,6 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" id="logout" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
@@ -270,53 +262,62 @@
         </div>
     </div>
 
-    <!-- Add student Modal-->
+    <!-- Add Student Modal-->
     <div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="form-add-student" style="display: flex; flex-direction: column; padding: 24px;">
-                    <div style="display: flex; flex-direction: column">
-                        <label for="">Họ và tên</label>
+                <form id="form-add-student" style="display: grid; grid-template-columns: 50% 50%; padding: 24px;">
+                    <div class="input-container" style="display: flex; flex-direction: column; margin-right: 12px">
+                        <label for="" style="overflow: hidden;">Họ và tên</label>
                         <input id="fullName" class="form-input" type="text"
-                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
                     </div>
 
-                    <div style="display: flex; flex-direction: column">
-                        <label for="">Giới tính</label>
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Giới tính</label>
                         <input id="gender" class="form-input" type="text"
-                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
                     </div>
 
-                    <div style="display: flex; flex-direction: column">
-                        <label for="">Tuổi</label>
-                        <input id="age" class="form-input" type="text"
-                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                    <div class="input-container" style="display: flex; flex-direction: column; margin-right: 12px">
+                        <label for="" style="overflow: hidden;">Ngày sinh</label>
+                        <input id="dateOfBirth" class="form-input" type="date"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
                     </div>
 
-                    <div style="display: flex; flex-direction: column">
-                        <label for="">Số điện thoại</label>
-                        <input id="phone" class="form-input" type="text"
-                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
-                        </span>
-                    </div>
-
-                    <div style="display: flex; flex-direction: column">
-                        <label for="">Phụ huynh</label>
-                        <input id="parent" class="form-input" type="text"
-                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Địa chỉ</label>
+                        <input id="address" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert"
                             style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
                     </div>
 
-                    <div class="modal-footer" style="width: 100%; padding: 0;">
+                    <div class="input-container" style="display: flex; flex-direction: column;  margin-right: 12px">
+                        <label for="" style="overflow: hidden;">Số điện thoại</label>
+                        <input id="phone" class="form-input" type="number"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Email</label>
+                        <input id="email" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <span class="alert"
+                            style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
+                    </div>
+
+                    <div class="modal-footer"
+                        style="width: 100%; padding: 0; grid-column-start: 1; grid-column-end: 3;">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal"
                             style="margin: 0 12px;">Cancel</button>
                         <a class="btn btn-primary" id="btn-accept-student" style="margin: 0;">Accept</a>
@@ -326,27 +327,75 @@
         </div>
     </div>
 
+
     <!-- Add Class Modal-->
     <div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="form-add-class" style="display: flex; flex-direction: column; padding: 24px;">
-                    <div style="display: flex; flex-direction: column">
-                        <label for="">Tên lớp</label>
+                <form id="form-add-class" style="display: grid; grid-template-columns: 50% 50%; padding: 24px;">
+                    <div style="display: flex; flex-direction: column; margin-right: 12px">
+                        <label for="" style="overflow: hidden;">Tên lớp</label>
                         <input id="className" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)"> </span>
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Giáo viên</label>
+                        <select id="teacher" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+
+                        </select>
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; margin-right: 12px">
+                        <label for="" style="overflow: hidden;">Ngày bắt đầu</label>
+                        <input id="schedule-start" class="form-input" type="date"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Khóa học</label>
+                        <select id="course" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                            <option value="36">Cấp tốc</option>
+                            <option value="72">Full lộ trình</option>
+                        </select>
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; margin-right: 12px">
+                        <label for="" style="overflow: hidden;">Lịch học</label>
+                        <select id="schedule-day" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                            <option value="true">Thứ 2; Thứ 4; Thứ 6</option>
+                            <option value="false">Thứ 3; Thứ 5; Thứ 7</option>
+                        </select>
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
                     </div>
 
                     <div style="display: flex; flex-direction: column">
-                        <label for="">Giáo viên</label>
-                        <input id="teacher" class="form-input" type="text"
+                        <label for="" style="overflow: hidden;">Ca học</label>
+                        <select id="shift" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)"> </span>
+                            <option value="1">Ca 1: 7h</option>
+                            <option value="2">Ca 2: 14h</option>
+                            <option value="3">Ca 3: 18h</option>
+                        </select>
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
                     </div>
 
-                    <div class="modal-footer" style="width: 100%; padding: 0;">
+                    <div class="modal-footer"
+                        style="width: 100%; padding: 0; grid-column-start: 1; grid-column-end: 3;">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal"
                             style="margin: 0 12px;">Cancel</button>
                         <a class="btn btn-primary" id="btn-accept-class" style="margin: 0;">Accept</a>
@@ -388,13 +437,18 @@
             rules_student: [
                 Validator.isFullName("#fullName"),
                 Validator.isGender("#gender"),
-                Validator.isAge("#age"),
+                Validator.isDateOfBirth("#dateOfBirth"),
                 Validator.isPhone("#phone"),
-                Validator.isParent("#parent"),
+                Validator.isEmail("#email"),
+                Validator.isAddress('#address')
             ],
             rules_class: [
                 Validator.isClassName("#className"),
                 Validator.isTeacher("#teacher"),
+                Validator.isScheduleStart('#schedule-start'),
+                Validator.isScheduleDay('#schedule-day'),
+                Validator.isCourse('#course'),
+                Validator.isShift('#shift'),
             ],
             onSubmit: function (data) {
                 data();
