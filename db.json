@@ -1,24 +1,38 @@
 {
-  "student":[ 
-  {
-    "ID": 1,
-    "Role": 2,
-    "Name": "Student3",
-    "Email": "Student3@student3.com",
-    "IsActive": "true",
-    "Mobile": "01234567678",
-    "DOB": "2003-06-19",
-    "Gender": 0,
-    "Address": "Hanoi"
-  }],
-  "admin": [{
-    "Role": 0,
-    "Name": "Admin",
-    "Email": "Admin3@admin3.com",
-    "IsActive": "true",
-    "Mobile": "01234567678",
-    "DOB": "2003-06-19",
-    "Gender": 0,
-    "Address": "Hanoi"
-  }]
+  "student": [
+    {
+      "ID": 1,
+      "Role": 2,
+      "Name": "Student3",
+      "Email": "Student3@student3.com",
+      "IsActive": "true",
+      "Mobile": "01234567678",
+      "DOB": "2003-06-19",
+      "Gender": 0,
+      "Address": "Hanoi"
+    },
+    {
+      "ID": 2,
+      "Role": 2,
+      "Name": "Student3",
+      "Email": "Student3@student2.com",
+      "IsActive": "true",
+      "Mobile": "01234567673",
+      "DOB": "2003-06-18",
+      "Gender": 1,
+      "Address": "Hanoi"
+    }
+  ],
+  "admin": [
+    {
+      "Role": 0,
+      "Name": "Admin",
+      "Email": "Admin3@admin3.com",
+      "IsActive": "true",
+      "Mobile": "01234567678",
+      "DOB": "2003-06-19",
+      "Gender": 0,
+      "Address": "Hanoi"
+    }
+  ]
 }
