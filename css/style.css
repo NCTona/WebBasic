@@ -86,13 +86,13 @@ html {
     display: none;
 }
 
-#hidden-nav{
+#hidden-nav {
     display: none;
 }
 
 
 @media (max-width: 600px) {
-    
+
 
     #nav {
         display: flex;
@@ -100,7 +100,7 @@ html {
         background-color: rgb(31, 31, 31);
     }
 
-    
+
 }
 
 
@@ -148,7 +148,7 @@ html {
     font-size: 48px;
     font-weight: lighter;
     padding-bottom: 12px;
-    transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.8s;
 }
 
 .description {
@@ -158,7 +158,7 @@ html {
     color: #fffd8d;
     left: 50%;
     padding-bottom: 24px;
-    transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.8s;
 }
 
 .button-slider {
@@ -170,7 +170,7 @@ html {
     transform: translateX(-50%);
     border-radius: 8px;
     color: #6D0D0D;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.8s ease-in-out;
     margin-bottom: 32px;
     height: 44px;
     width: 198px;
@@ -188,6 +188,8 @@ html {
     text-decoration: none;
     color: #6D0D0D;
     font-weight: 600;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
 }
 
 .sign-in-form {
@@ -197,7 +199,7 @@ html {
     overflow: hidden;
     transition: height ease-in-out 1s;
     grid-column-start: 2;
-    grid-column-end: 3; 
+    grid-column-end: 3;
 }
 
 .sign-in-form form {
@@ -206,6 +208,18 @@ html {
     padding: 24px;
     border-radius: 12px;
     background-image: linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9));
+}
+
+
+.sign-in-form .close-container{
+    font-size: 20px;
+    color: #fffd8d;
+    display: flex;
+    justify-content: end;
+}
+
+.close:hover{
+    cursor: pointer;
 }
 
 .sign-in-form h1 {
@@ -261,9 +275,9 @@ label {
     background-color: rgba(208, 189, 177, 0.853);
 }
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
 
-    .sign-in-form{
+    .sign-in-form {
         grid-column-start: 1;
         grid-column-end: 3;
     }
@@ -277,6 +291,7 @@ label {
     align-items: start;
     background-image: linear-gradient(rgba(0, 44, 39, 0.7), rgba(0, 44, 39, 0.7));
 }
+
 
 .side-bar {
     display: grid;
@@ -321,6 +336,13 @@ label {
     color: #fffd8d;
 }
 
+.courses-paragraph {
+    height: 0%;
+    overflow: hidden;
+    transition: all ease-in-out 0.8s;
+}
+
+
 .courses .courses-content {
     margin: 0 32px;
     grid-column-start: 2;
@@ -328,27 +350,37 @@ label {
     grid-row-start: 2;
     grid-row-end: 3;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     justify-content: center;
+    align-items: center;
     gap: 32px;
-    height: 80%;
+    height: 100%;
+    padding-bottom: 48px;
 }
 
-.courses .courses-description {
+.courses-description {
+    display: grid;
+    height: 50%;
     color: #fffd8d;
     margin-right: 24px;
-    padding: 24px;
+    padding: 32px;
     border-radius: 12px;
     background-image: linear-gradient(rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.7));
-    transition: all 0.4s ease-in-out;
+    transition: all 0.8s ease-in-out;
     width: 100%;
-    height: 100%;
 }
 
 .courses .courses-description:hover {
-    transform: translateY(-1rem);
     box-shadow: 0px 20px 40px -10px rgba(12, 12, 12, 0.4);
+}
 
+.courses-description:hover .courses-paragraph {
+    height: 100%;
+}
+
+.courses-description:hover {
+    height: 80%;
 }
 
 @media (max-width: 900px) {
@@ -390,6 +422,7 @@ label {
     }
 
     #content .courses {
+        height: 112vh;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 2fr;
     }
@@ -413,13 +446,23 @@ label {
         grid-row-start: 2;
         grid-row-end: 3;
         margin: 24px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr;
     }
+
+    .courses-description{
+        height: 60%;
+    }
+
+    .courses-description:hover {
+        height: 100%;
+    }    
 
 }
 
 #content .classes {
-    min-height: 100vh;
+    min-height: 112vh;
     background-image: linear-gradient(rgba(208, 205, 177, 0.8), rgba(208, 205, 177, 0.8));
     display: grid;
     grid-template-columns: 2fr 2fr 0.8fr;
@@ -463,6 +506,13 @@ label {
     margin: 32px;
 }
 
+.classes-sum{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    transition: all 0.8s ease-in-out;
+}
+
 .classes-content {
     color: #fffd8d;
     margin-right: 24px;
@@ -474,9 +524,23 @@ label {
     height: 100%;
 }
 
+.classes-paragraph{
+    height: 0%;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+}
+
 .classes-content:hover {
     transform: translateY(-1rem);
     box-shadow: -10px 20px 40px -10px rgba(12, 12, 12, 0.4);
+}
+
+.classes-sum:hover{
+    height: 100%;
+}
+
+.classes-content:hover .classes-paragraph{
+    height: 100%;
 }
 
 @media (max-width: 900px) {

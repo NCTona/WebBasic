@@ -5,6 +5,8 @@ var slider_title = document.querySelector(".slider-title h2");
 var slider_description = document.querySelector(".slider-title p");
 var slider = document.querySelector("#slider");
 var slider_transition = document.querySelector(".slider-before");
+var close_button = document.querySelector(".close")
+var button_content = document.querySelector("#sign-in")
 function display_form(){
     
     button.addEventListener("click", function(){
@@ -14,8 +16,19 @@ function display_form(){
         form_container.setAttribute("style", "z-index: 1; height: 100%; flex-direction: column; display: flex; justify-content: center");
         slider_title.setAttribute("style", "color: rgba(0,0,0,0)");
         slider_description.setAttribute("style", "color: rgba(0,0,0,0)");
-        slider_transition.setAttribute("style", "opacity: 0.9");
-        document.getElementById("button-slider").innerText = "";
+        slider_transition.setAttribute("style", "opacity: 0.8");
+        button_content.setAttribute("style", "height: 0")
+        // button_content.innerHTML = "";
+    })
+    close_button.addEventListener("click", function(){
+        slider.setAttribute("style", "justify-items: center; align-items: center;")
+        button.setAttribute("style", "");
+        form.setAttribute("style", "display: flex;");
+        form_container.setAttribute("style", "z-index: 1; flex-direction: column; display: flex; justify-content: center");
+        slider_title.setAttribute("style", "");
+        slider_description.setAttribute("style", "");
+        slider_transition.setAttribute("style", "");
+        button_content.setAttribute("style", "height: 100%")
     })
 }
 

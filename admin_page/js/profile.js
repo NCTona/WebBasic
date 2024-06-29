@@ -2,7 +2,6 @@ var profile = document.querySelector('#profile');
 var profile_alert = document.querySelector('#profileModal')
 var profile_modal = document.querySelectorAll('.modal-dialog')
 var button_cancel = document.querySelectorAll('.btn-secondary')
-console.log(button_cancel)
 
 profile.onclick = function () {
     profile_alert.setAttribute("style", "display: block")

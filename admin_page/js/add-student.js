@@ -9,9 +9,7 @@ add_student.onclick = function () {
         add_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
     })
     add_student_modal[2].setAttribute("style", "transform: translate(0, 0px);")
-
 }
-
 
 button_cancel[2].onclick = function () {
     add_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")

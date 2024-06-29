@@ -9,7 +9,6 @@ function Validator(options) {
 
         options.rules_profile.forEach(function (rule) {
             var inputElement = formElementProfile.querySelector(rule.selector);
-            console.log(inputElement)
             var errorElement = inputElement.parentElement.querySelector('.alert');
 
             var input = inputElement.parentElement.querySelector('.form-input');
@@ -136,7 +135,8 @@ function Validator(options) {
                         Mobile: formElementStudent.querySelector('#phone').value,
                         Gender: formElementStudent.querySelector('#gender').value,
                         Address: formElementStudent.querySelector('#address').value,
-                        DOB: formElementStudent.querySelector('#dateOfBirth').value
+                        DOB: formElementStudent.querySelector('#dateOfBirth').value,
+                        Password: 'student'
                     }
                     console.log(data)
                     var api_post_students = 'https://localhost:7256/api/user'
