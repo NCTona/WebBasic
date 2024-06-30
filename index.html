@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
+    <link href="admin_page/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -81,6 +83,32 @@ FONT SIZE SYSTEM (px)
 
             <!-- Button display form -->
             <button class="button-slider" id="button-slider"><a href="#" id="sign-in">Get started</a></button>
+
+            <!-- Ads -->
+            <div class="ads-container">
+                <div class="ads">
+                    <h1 style="padding-bottom: 12px;">
+                        OPENING
+                        <i class="fas fa-fw fa-school" style="margin-left: 12px;"></i>
+                    </h1>
+                    <h2 style="padding-bottom: 12px;">
+                        LỚP 1.1
+                    </h2>
+
+                    <p style="padding-bottom: 12px;">
+                        Học phí: 200.000VND
+                    </p>
+
+                    <p style="padding-bottom: 12px;">
+                        Khóa học: Cấp tốc
+                    </p>
+
+                    <p style="padding-bottom: 12px;">
+                        Số lượng buổi học: 36
+                    </p>
+                </div>
+            </div>
+
 
             <!-- Form sign in -->
             <div class="sign-in-form">
@@ -217,7 +245,7 @@ FONT SIZE SYSTEM (px)
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="classes-sum">
                         <div class="classes-content">
                             <h2 style="padding-bottom: 12px;">
@@ -279,6 +307,22 @@ FONT SIZE SYSTEM (px)
 
     <!-- Display form when click button -->
     <script src="./js/form-display.js"></script>
+    <script>
+        var tokenLogin = document.cookie.split('=')
+        var api = 'https://localhost:7256/api/StudentAttendance/quarterly'
+        fetch(api, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                "Cookie": `AuthToken=${tokenLogin[1]}`
+            },
+        })
+            .then(function (reponse) {
+                return reponse.json()
+            })
+
+    </script>
 
     <!-- Validator -->
     <script src="./js/validator.js"></script>

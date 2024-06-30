@@ -52,28 +52,36 @@ function Validator(options) {
                 })
                 if (isValid) {
                     options.onSubmit(function () {
-                        var apiAdmin = 'http://localhost:3000/Admin'
-                        fetch(apiAdmin)
-
+                        var apiAdmin = 'https://localhost:7256/api/Account/login'
+                        var data = {
+                            "Email": document.querySelector('#username').value,
+                            "Password": document.querySelector('#password').value
+                        }
+                        fetch(apiAdmin, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                // 'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: JSON.stringify(data)
+                        })
                             .then(function (reponse) {
                                 return reponse.json();
                             })
 
-                            .then(function (admin) {
-                                console.log(typeof formElement.querySelector('#username').value);
-                                console.log(formElement.querySelector('#username').value === admin[0].username)
-                                if (formElement.querySelector('#username').value === admin[0].username && formElement.querySelector('#password').value === admin[0].password) {
-                                    setTimeout(function () {
-                                        window.location.href = "./admin_page/dashboard.html"
-                                    }, 1600)
+                            .then(function (std) {
+                                if (std.token != undefined) {
+                                    document.cookie = `token=${std.token}`
                                     Swal.fire({
                                         position: "center",
                                         icon: "success",
                                         title: "Sign in success",
                                         showConfirmButton: false,
                                         timer: 1500
-                                      });
-                                      
+                                    });
+                                    setTimeout(function () {
+                                        window.location.href = "./admin_page/dashboard.html"
+                                    }, 1600)
                                 } else {
                                     errorElement.innerText = "(*)Tài khoản hoặc mật khẩu không đúng";
                                 }
