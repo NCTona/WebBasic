@@ -2,8 +2,12 @@ var admin_name = document.querySelector('#admin-name')
 var adminFullName = document.querySelector('#adminFullName')
 var adminGender = document.querySelector('#adminGender')
 var adminPhone = document.querySelector('#adminPhone')
-// var apiAdmin = 'https://localhost:7256/api/User/role/:id?role=0'
-var apiAdmin = 'http://localhost:3000/admin'
+var dataCookie = document.cookie.split(';')
+var idCookie = dataCookie[0].split('=')
+console.log(idCookie)
+
+
+var apiAdmin = 'https://localhost:7256/api/User/role/' + idCookie[1] + '?role=0'
 
 
 fetch(apiAdmin)
@@ -11,104 +15,202 @@ fetch(apiAdmin)
         return reponse.json();
     })
     .then(function (admin) {
-        admin_name.innerHTML = admin[0].Name
-        adminFullName.value = admin[0].Name
-        if (admin[0].Gender == 0) {
+        console.log(admin)
+        admin_name.innerHTML = admin.name
+        adminFullName.value = admin.name
+        if (admin.gender == 0) {
             adminGender.value = 'Nữ'
         } else {
             adminGender.value = 'Nam'
         }
-        adminPhone.value = admin[0].Mobile
-        adminDateOfBirth.value = admin[0].DOB
+        adminPhone.value = admin.mobile
+        adminDateOfBirth.value = admin.dob
     })
 
 var grade_page = document.querySelectorAll('.collapse-item')
-var select = document.querySelector('#select-class')
+var select_class = document.querySelector('#select-class')
+var select_year = document.querySelector('#select-year')
+
 
 for (var i = 0; i < grade_page.length; i++) {
     if (grade_page[i].getAttribute("class") == "collapse-item active") {
         var grade_view = i + 1;
-        // var apiStudent = 'https://localhost:7256/api/UserClass/class/' + grade_view
-        var apiStudent = 'http://localhost:3000/student'
+        var apiClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=A' + select_class.value;
+        console.log(apiClass)
 
-        fetch(apiStudent)
-
+        fetch(apiClass)
             .then(function (reponse) {
                 return reponse.json();
             })
+            .then(function (idClass) {
+                if (idClass[0]) {
+                    var apiStd = 'https://localhost:7256/api/UserClass/class/' + idClass[0].id;
 
-            .then(function (student) {
-                return student;
+                } else {
+                    document.querySelector("#tbody").innerHTML = ``;
+                }
+                return apiStd
+            })
+            .then(function (apiStudent) {
+                fetch(apiStudent)
+                    .then(function (reponse) {
+                        return reponse.json()
+                    })
+                    .then(function (std) {
+                        return std
+                    })
+                    .then(function (s) {
+                        console.log(s)
+
+                        var htmls = s.map(function (tb) {
+                            var stdGender
+                            if (tb.gender == 0) {
+                                stdGender = 'Nữ'
+                            } else {
+                                stdGender = 'Nam'
+                            }
+                            return `<tr>
+                                            <td>${tb.id}</td>
+                                            <td>${tb.name}</td>
+                                            <td>${stdGender}</td>
+                                            <td>${tb.dob}</td>
+                                            <td>${tb.mobile}</td>
+                                            <td>${tb.address}</td>
+                                            <td> <button id="btn-info-${tb.id}" style="border: none; background-color: #909090; color: rgb(40, 40, 40); border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Info</button>
+                                            <button id="btn-delete-${tb.id}" style="border: none; background-color: #df3535; color: aliceblue; border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Delete</button></td>
+                                        </tr>`
+                        })
+
+                        var html = htmls.join('');
+
+                        document.querySelector("#tbody").innerHTML = html;
+
+                    })
             })
 
-            .then(function (s) {
-
-                var htmls = s.map(function (tb) {
-                    return `<tr>
-                    <td>${tb.ID}</td>
-                    <td>${tb.Name}</td>
-                    <td>${tb.Gender}</td>
-                    <td>${tb.DOB}</td>
-                    <td>${tb.Mobile}</td>
-                    <td>${tb.Address}</td>
-                    <td> <button id="btn-info-${tb.ID}" style="border: none; background-color: #909090; color: rgb(40, 40, 40); border-radius: 4px; padding: 4px; height: 32px; width: 64px;"> Info</button>
-                    <button id="btn-delete-${tb.ID}" style="border: none; background-color: #df3535; color: aliceblue; border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Delete</button></td>
-                </tr>`
-                })
-
-                var html = htmls.join('');
-
-                document.querySelector("#tbody").innerHTML = html;
-
-            })
-
-            .then(function(){
+            .then(function () {
                 document.querySelector('#info-student').setAttribute("src", "js/info-student.js")
             })
 
-            .catch(function(err){
-                console.log(err)
-            })
-
-        select.onchange = function () {
-            if (select.value) {
-                var apiStudent = 'http://localhost:3000/Class' + grade_view + '.' + i;
+        select_class.onchange = function () {
+            if (select_class.value) {
+                var apiClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=A' + select_class.value;
+                console.log(apiClass)
             } else {
                 document.querySelector("#tbody").innerHTML = ``;
             }
-        }
+            fetch(apiClass)
+                .then(function (reponse) {
+                    return reponse.json();
+                })
+                .then(function (idClass) {
+                    if (idClass[0]) {
+                        var apiStd = 'https://localhost:7256/api/UserClass/class/' + idClass[0].id;
 
-        fetch(apiStudent)
-            .then(function (reponse) {
-                return reponse.json();
-            })
-            .then(function (student) {
-                return student;
-            })
-            .then(function (s) {
+                    } else {
+                        document.querySelector("#tbody").innerHTML = ``;
+                    }
+                    return apiStd
+                })
+                .then(function (apiStudent) {
+                    fetch(apiStudent)
+                        .then(function (reponse) {
+                            return reponse.json()
+                        })
+                        .then(function (std) {
+                            return std
+                        })
+                        .then(function (s) {
+                            console.log(s)
 
+                            var htmls = s.map(function (tb) {
+                                var stdGender
+                                if (tb.gender == 0) {
+                                    stdGender = 'Nữ'
+                                } else {
+                                    stdGender = 'Nam'
+                                }
+                                return `<tr>
+                                            <td>${tb.id}</td>
+                                            <td>${tb.name}</td>
+                                            <td>${stdGender}</td>
+                                            <td>${tb.dob}</td>
+                                            <td>${tb.mobile}</td>
+                                            <td>${tb.address}</td>
+                                            <td> <button id="btn-info-${tb.id}" style="border: none; background-color: #909090; color: rgb(40, 40, 40); border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Info</button>
+                                            <button id="btn-delete-${tb.id}" style="border: none; background-color: #df3535; color: aliceblue; border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Delete</button></td>
+                                        </tr>`
+                            })
 
-                var htmls = s.map(function (tb) {
-                    return `<tr>
-                                    <td>${tb.ID}</td>
-                                    <td>${tb.Name}</td>
-                                    <td>${tb.Gender}</td>
-                                    <td>${tb.DOB}</td>
-                                    <td>${tb.Mobile}</td>
-                                    <td>${tb.Address}</td>
-                                    <td> <button id="btn-info-${tb.ID}" style="border: none; background-color: #909090; color: rgb(40, 40, 40); border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Info</button>
-                                    <button id="btn-delete-${tb.ID}" style="border: none; background-color: #df3535; color: aliceblue; border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Delete</button></td>
-                                </tr>`
+                            var html = htmls.join('');
+
+                            document.querySelector("#tbody").innerHTML = html;
+
+                        })
                 })
 
-                var html = htmls.join('');
+                .then(function () {
+                    document.querySelector('#info-student').setAttribute("src", "js/info-student.js")
+                })
+        }
 
-                document.querySelector("#tbody").innerHTML = html;
+        select_year.onchange = function () {
+            if (select_year.value) {
+                var apiClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=A' + select_class.value;
+                console.log(apiClass)
+            } else {
+                document.querySelector("#tbody").innerHTML = ``;
+            }
+            fetch(apiClass)
+                .then(function (reponse) {
+                    return reponse.json();
+                })
+                .then(function (idClass) {
+                    if (idClass[0]) {
+                        var apiStd = 'https://localhost:7256/api/UserClass/class/' + idClass[0].id;
 
-            })
-            .then(function(){
-                document.querySelector('#info-student').setAttribute("src", "js/info-student.js")
-            })
+                    } else {
+                        document.querySelector("#tbody").innerHTML = ``;
+                    }
+                    return apiStd
+                })
+                .then(function (apiStudent) {
+                    fetch(apiStudent)
+                        .then(function (reponse) {
+                            return reponse.json()
+                        })
+                        .then(function (std) {
+                            return std
+                        })
+                        .then(function (s) {
+                            console.log(s)
+
+                            var htmls = s.map(function (tb) {
+                                var stdGender
+                                if (tb.gender == 0) {
+                                    stdGender = 'Nữ'
+                                } else {
+                                    stdGender = 'Nam'
+                                }
+                                return `<tr>
+                                            <td>${tb.id}</td>
+                                            <td>${tb.name}</td>
+                                            <td>${stdGender}</td>
+                                            <td>${tb.dob}</td>
+                                            <td>${tb.mobile}</td>
+                                            <td>${tb.address}</td>
+                                            <td> <button id="btn-info-${tb.id}" style="border: none; background-color: #909090; color: rgb(40, 40, 40); border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Info</button>
+                                            <button id="btn-delete-${tb.id}" style="border: none; background-color: #df3535; color: aliceblue; border-radius: 4px; padding: 4px; height: 32px; width: 64px;">Delete</button></td>
+                                        </tr>`
+                            })
+
+                            var html = htmls.join('');
+
+                            document.querySelector("#tbody").innerHTML = html;
+
+                        })
+                })
+        }
     }
 }
 

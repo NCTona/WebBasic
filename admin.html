@@ -39,22 +39,30 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="form-admin">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="inputUsername" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
+                                            <div class="alert"
+                                                style="color: rgb(195, 89, 89); font-size: 80%; height: 15.2px; font-style: italic; padding: 2px;">
+                                            </div>
+
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="inputPassword" placeholder="Password">
+                                            <div class="alert"
+                                                style="color: rgb(195, 89, 89); font-size: 80%; height: 15.2px; font-style: italic; padding: 2px;">
+                                            </div>
+
                                         </div>
                                         <hr>
-                                        <a href="admin_page/dashboard.html" class="btn btn-primary btn-user btn-block">
+                                        <a class="btn btn-primary btn-user btn-block form-button">
                                             Login
                                         </a>
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -67,15 +75,23 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Admin login -->
+    <script src="admin_page/js/login.js"></script>
+    <script>
+        Validator({
+            form: ".form-admin",
+            rules: [
+                Validator.isUsername("#inputUsername"),
+                Validator.isPassword("#inputPassword"),
+            ],
+            onSubmit: function (data) {
+                data();
+            }
+        })
+    </script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- Auto login -->
+    <script src="js/login_session.js"></script>
 
 </body>
 

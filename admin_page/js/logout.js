@@ -30,5 +30,10 @@ button_cancel[0].onclick = function () {
 }
 
 button_logout.onclick = function () {
+
+    document.cookie = `username=; path=/`
+    document.cookie = `password=; path=/`
+    document.cookie = `token=; path=/`
+
     window.location = "/index.html"
 }

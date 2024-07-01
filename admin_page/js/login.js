@@ -1,3 +1,5 @@
+
+
 function Validator(options) {
     var formElement = document.querySelector(options.form);
 
@@ -6,24 +8,24 @@ function Validator(options) {
         options.rules.forEach(function (rule) {
             var inputElement = formElement.querySelector(rule.selector);
             var errorElement = inputElement.parentElement.querySelector('.alert');
-            var input = inputElement.parentElement.querySelector('.form-input');
             var button = document.querySelector('.form-button')
 
             if (inputElement) {
                 inputElement.onblur = function () {
                     var errorMessage = rule.test(inputElement.value);
+                    console.log(inputElement)
 
                     if (errorMessage) {
                         errorElement.innerText = errorMessage;
-                        input.setAttribute("style", "border: 2px solid rgb(195, 89, 89);")
+                        inputElement.setAttribute("style", "border: 2px solid rgb(195, 89, 89);")
                     } else {
                         errorElement.innerText = " ";
-                        input.setAttribute("style", "border: 2px solid #fffd8d;")
+                        inputElement.setAttribute("style", "")
                     }
                 }
                 inputElement.oninput = function () {
                     errorElement.innerText = " ";
-                    input.setAttribute("style", "border: 2px solid #b3ff3a;")
+                    inputElement.setAttribute("style", "border: 2px solid #b3ff3a;")
                 }
 
             }
@@ -35,15 +37,14 @@ function Validator(options) {
                     var inputElement = formElement.querySelector(rule.selector);
                     var errorElement = inputElement.parentElement.querySelector('.alert');
                     var errorMessage = rule.test(inputElement.value);
-                    var input = inputElement.parentElement.querySelector('.form-input');
 
                     if (errorMessage) {
                         errorElement.innerText = errorMessage;
-                        input.setAttribute("style", "border: 2px solid rgb(195, 89, 89);")
+                        inputElement.setAttribute("style", "border: 2px solid rgb(195, 89, 89);")
                         isValid = false;
                     } else {
                         errorElement.innerText = " ";
-                        input.setAttribute("style", "border: 2px solid #fffd8d;")
+                        inputElement.setAttribute("style", "")
 
                     }
 
@@ -52,10 +53,9 @@ function Validator(options) {
                     options.onSubmit(function () {
                         var apiAdmin = 'https://localhost:7256/api/Account/login'
                         var data = {
-                            "Email": document.querySelector('#username').value,
-                            "Password": document.querySelector('#password').value
+                            "Email": document.querySelector('#inputUsername').value,
+                            "Password": document.querySelector('#inputPassword').value
                         }
-
                         fetch(apiAdmin, {
                             method: "POST",
                             headers: {
@@ -68,14 +68,9 @@ function Validator(options) {
                                 return reponse.json();
                             })
 
-                            .then(function (user) {
-                                console.log(user)
-                                if (user.token != undefined) {
-                                    document.cookie = `username=${document.querySelector('#username').value}`
-                                    document.cookie = `password=${document.querySelector('#password').value}`
-                                    document.cookie = `token=${user.token}`
-                                    document.cookie = `id=${user.id}`
-                                    document.cookie = `role=${user.role}`
+                            .then(function (admin) {
+                                if (admin.token != undefined) {
+                                    document.cookie = `token=${std.token}`
                                     Swal.fire({
                                         position: "center",
                                         icon: "success",

@@ -307,22 +307,6 @@ FONT SIZE SYSTEM (px)
 
     <!-- Display form when click button -->
     <script src="./js/form-display.js"></script>
-    <script>
-        var tokenLogin = document.cookie.split('=')
-        var api = 'https://localhost:7256/api/StudentAttendance/quarterly'
-        fetch(api, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                "Cookie": `AuthToken=${tokenLogin[1]}`
-            },
-        })
-            .then(function (reponse) {
-                return reponse.json()
-            })
-
-    </script>
 
     <!-- Validator -->
     <script src="./js/validator.js"></script>
@@ -339,6 +323,10 @@ FONT SIZE SYSTEM (px)
             }
         });
     </script>
+
+    <!-- Auto login -->
+     <script src="js/login_session.js"></script>
+
 </body>
 
 </html>

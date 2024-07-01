@@ -51,22 +51,21 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-           <!-- Nav Item - Grade Collapse Menu -->
-           <li id="grade" class="nav-item">
-            <a id="grade-item" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-school"></i>
-                <span>Grade</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="grade-1.html">Grade 1</a>
-                    <a class="collapse-item" href="grade-2.html">Grade 2</a>
-                    <a class="collapse-item" href="grade-3.html">Grade 3</a>
+            <!-- Nav Item - Grade Collapse Menu -->
+            <li id="grade" class="nav-item">
+                <a id="grade-item" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-school"></i>
+                    <span>Grade</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="grade-1.html">Grade 1</a>
+                        <a class="collapse-item" href="grade-2.html">Grade 2</a>
+                        <a class="collapse-item" href="grade-3.html">Grade 3</a>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
 
             <!-- Nav Item - Salary -->
             <li class="nav-item">
@@ -129,20 +128,13 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" id="profile" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" id="logout" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" id="logout" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -268,6 +260,55 @@
         </div>
     </div>
 
+    <!-- Profile Modal-->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="form-profile" style="display: flex; flex-direction: column; padding: 24px;">
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Họ và tên</label>
+                        <input id="adminFullName" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Giới tính</label>
+                        <input id="adminGender" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Ngày sinh</label>
+                        <input id="adminDateOfBirth" class="form-input" type="date"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                        </span>
+                    </div>
+
+                    <div class="input-container" style="display: flex; flex-direction: column;">
+                        <label for="" style="overflow: hidden;">Số điện thoại</label>
+                        <input id="adminPhone" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <span class="alert"
+                            style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
+                    </div>
+
+                    <div class="modal-footer"
+                        style="width: 100%; padding: 0; grid-column-start: 1; grid-column-end: 3;">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            style="margin: 0 12px;">Cancel</button>
+                        <a class="btn btn-primary" id="btn-accept-admin" style="margin: 0;">Accept</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -292,12 +333,15 @@
     <!-- Logout alert -->
     <script src="js/logout.js"></script>
 
-     <!-- Grade active -->
-     <script src="js/nav-collapse.js"></script>
+    <!-- Grade active -->
+    <script src="js/nav-collapse.js"></script>
 
     <!-- Insert frequently -->
     <script src="js/fakeApi.js"></script>
-     
+
+    <!-- Profile modal -->
+    <script src="js/profile.js"></script>
+
 </body>
 
 </html>
