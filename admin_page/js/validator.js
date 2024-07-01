@@ -71,6 +71,26 @@ function Validator(options) {
                         },
                         body: JSON.stringify(data),
                     })
+                        .then(function (reponse) {
+                            return reponse.json()
+                        })
+                        .then(function (data) {
+                            if (data.status) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Something went wrong!",
+                                });
+                            } else {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Success",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        })
                 }
             }
         })
@@ -149,6 +169,24 @@ function Validator(options) {
                         .then(function (reponse) {
                             return reponse.json()
                         })
+                        .then(function (data) {
+                            if (data.status) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Something went wrong!",
+                                });
+                            } else {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Success",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                            return data
+                        })
                         .then(function (std) {
                             var apiLinkParent = 'https://localhost:7256/api/StudentParent'
                             fetch(apiLinkParent, {
@@ -161,8 +199,28 @@ function Validator(options) {
                                     "ParentID": document.querySelector('#parent').value,
                                     "StudentID": std.id
                                 }),
-                            })
 
+                            })
+                                .then(function (reponse) {
+                                    return reponse.json()
+                                })
+                                .then(function (data) {
+                                    if (data.status) {
+                                        Swal.fire({
+                                            icon: "error",
+                                            title: "Oops...",
+                                            text: "Something went wrong!",
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            position: "center",
+                                            icon: "success",
+                                            title: "Success",
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    }
+                                })
                         })
                 }
             }
@@ -225,7 +283,7 @@ function Validator(options) {
                         }
                     }
 
-                    if(formElementClass.querySelector('#schedule-day').value == "true"){
+                    if (formElementClass.querySelector('#schedule-day').value == "true") {
                         var boolean = true
                     } else {
                         var boolean = false
@@ -255,6 +313,34 @@ function Validator(options) {
                         },
                         body: JSON.stringify(data),
                     })
+                        .then(function (reponse) {
+                            return reponse.json()
+                        })
+                        .then(function (data) {
+                            console.log(data)
+                            if (data.Status) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Something went wrong!",
+                                });
+                            } else {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Success",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        })
+                        .catch(function (err) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Something went wrong!",
+                            });
+                        })
                 }
             }
         })
@@ -330,6 +416,26 @@ function Validator(options) {
                         },
                         body: JSON.stringify(data),
                     })
+                    .then(function(reponse){
+                        return reponse.json()
+                    })
+                    .then(function(data){
+                        if(data.status){
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Something went wrong!",
+                              });
+                        } else {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
                 }
             }
         })
@@ -404,6 +510,26 @@ function Validator(options) {
                             // 'Content-Type': 'application/x-www-form-urlencoded',
                         },
                         body: JSON.stringify(data),
+                    })
+                    .then(function(reponse){
+                        return reponse.json()
+                    })
+                    .then(function(data){
+                        if(data.status){
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Something went wrong!",
+                              });
+                        } else {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
                     })
                 }
             }

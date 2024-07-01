@@ -17,6 +17,7 @@ fetch(apiParent)
             `
         })
 
+
         var html = htmls.join('');
 
         document.querySelector("#parent").innerHTML = html;
