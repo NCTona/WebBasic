@@ -453,6 +453,56 @@
         </div>
     </div>
 
+    <!-- Info Student Modal-->
+    <div class="modal fade" id="infoStudentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    <form id="form-info-parent" style="display: flex; flex-direction: column; padding: 24px;">
+                        <div class="input-container" style="display: flex; flex-direction: column;">
+                            <label for="" style="overflow: hidden;">Họ và tên</label>
+                            <input id="parentFullName" class="form-input" type="text"
+                                style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                            <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                            </span>
+                        </div>
+    
+                        <div class="input-container" style="display: flex; flex-direction: column;">
+                            <label for="" style="overflow: hidden;">Giới tính</label>
+                            <input id="parentGender" class="form-input" type="text"
+                                style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                            <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                            </span>
+                        </div>
+    
+                        <div class="input-container" style="display: flex; flex-direction: column;">
+                            <label for="" style="overflow: hidden;">Ngày sinh</label>
+                            <input id="parentDateOfBirth" class="form-input" type="date"
+                                style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                            <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
+                            </span>
+                        </div>
+    
+                        <div class="input-container" style="display: flex; flex-direction: column;">
+                            <label for="" style="overflow: hidden;">Số điện thoại</label>
+                            <input id="parentPhone" class="form-input" type="text"
+                                style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                            <span class="alert"
+                                style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
+                        </div>
+    
+                        <div class="modal-footer"
+                            style="width: 100%; padding: 0; grid-column-start: 1; grid-column-end: 3;">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                style="margin: 0 12px;">Cancel</button>
+                            <a class="btn btn-primary" id="btn-accept-parent" style="margin: 0;">Accept</a>
+                        </div>
+                    </form> 
+            </div>
+        </div>
+    </div>
+
+
     <!-- Insert frequently -->
     <script src="js/fakeApi.js"></script>
 

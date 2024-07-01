@@ -4,7 +4,6 @@ var adminGender = document.querySelector('#adminGender')
 var adminPhone = document.querySelector('#adminPhone')
 var dataCookie = document.cookie.split(';')
 var idCookie = dataCookie[0].split('=')
-console.log(idCookie)
 
 
 var apiAdmin = 'https://localhost:7256/api/User/role/' + idCookie[1] + '?role=0'
@@ -15,7 +14,6 @@ fetch(apiAdmin)
         return reponse.json();
     })
     .then(function (admin) {
-        console.log(admin)
         admin_name.innerHTML = admin.name
         adminFullName.value = admin.name
         if (admin.gender == 0) {
@@ -34,9 +32,21 @@ var select_year = document.querySelector('#select-year')
 
 for (var i = 0; i < grade_page.length; i++) {
     if (grade_page[i].getAttribute("class") == "collapse-item active") {
+
+        var apiGrade = 'https://localhost:7256/api/Class/Grade/Year?grade=1&year=2024'
+
+        fetch(apiGrade)
+            .then(function(reponse){
+                return reponse.json()
+            })
+            .then(function(cls){
+                cls.forEach(element => {
+                    
+                });
+            })
+
         var grade_view = i + 1;
         var apiClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=A' + select_class.value;
-        console.log(apiClass)
 
         fetch(apiClass)
             .then(function (reponse) {
@@ -60,7 +70,6 @@ for (var i = 0; i < grade_page.length; i++) {
                         return std
                     })
                     .then(function (s) {
-                        console.log(s)
 
                         var htmls = s.map(function (tb) {
                             var stdGender
@@ -85,17 +94,107 @@ for (var i = 0; i < grade_page.length; i++) {
 
                         document.querySelector("#tbody").innerHTML = html;
 
-                    })
-            })
+                        return s;
 
-            .then(function () {
-                document.querySelector('#info-student').setAttribute("src", "js/info-student.js")
+                    })
+                    .then(function (tb) {
+                        tb.forEach(tb => {
+                            var btnStudentId = '#btn-info-' + tb.id
+                            var btnDeleteStudentId = '#btn-delete-' + tb.id
+                            var btn_info_student = document.querySelector(btnStudentId)
+                            var btn_delete_student = document.querySelector(btnDeleteStudentId)
+                            var info_student_alert = document.querySelector('#infoStudentModal')
+                            var info_student_modal = document.querySelectorAll('.modal-dialog')
+                            var button_cancel = document.querySelectorAll('.btn-secondary')
+                            var button_put_parent = document.querySelector('#btn-put-parent')
+                            var parentFullName = document.querySelector('#parentFullName')
+                            var parentGender = document.querySelector('#parentGender')
+                            var parentPhone = document.querySelector('#parentPhone')
+
+                            var apiFindParent = 'https://localhost:7256/api/StudentParent/child/' + tb.id
+
+
+                            btn_info_student.onclick = function () {
+
+                                fetch(apiFindParent)
+                                    .then(function (reponse) {
+                                        return reponse.json()
+                                    })
+                                    .then(function (par) {
+                                        if (par.status) {
+                                            parentFullName.value = ''
+                                            parentPhone.value = ''
+                                            parentDateOfBirth.value = ''
+                                            parentGender.value = ''
+                                        } else if (par.gender == 0) {
+                                            parentGender.value = 'Nữ'
+                                        } else {
+                                            parentGender.value = 'Nam'
+                                        }
+                                        parentFullName.value = par.name
+                                        parentPhone.value = par.mobile
+                                        parentDateOfBirth.value = par.dob
+                                        return par
+                                    })
+                                    .then(function (par) {
+                                        button_put_parent.onclick = function () {
+                                            var data = {
+                                                Name: parentFullName.value,
+                                                Mobile: parentPhone.value,
+                                                Gender: parentGender.value,
+                                                DOB: parentDateOfBirth.value
+                                            }
+                                            var api_put_parent = 'https://localhost:7256/api/User/role/' + par.id
+                                            fetch(api_put_parent, {
+                                                method: "PUT",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                                                },
+                                                body: JSON.stringify(data),
+                                            })
+                                        }
+
+                                    })
+
+
+                                info_student_alert.setAttribute("style", "display: block")
+                                setTimeout(function () {
+                                    info_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
+                                })
+                                info_student_modal[4].setAttribute("style", "transform: translate(0, 0px);")
+
+                                button_cancel[4].onclick = function () {
+                                    info_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")
+                                    setTimeout(function () {
+                                        info_student_alert.setAttribute("style", "display: none")
+                                    }, 150)
+                                }
+                            }
+
+                            btn_delete_student.onclick = function () {
+                                fetch(apiStudent)
+                                    .then(function (reponse) {
+                                        return reponse.json()
+                                    })
+                                    .then(function (std) {
+                                        var api_delete_student = 'https://localhost:7256/api/User/role/' + std.id
+                                        fetch(api_delete_student, {
+                                            method: "DELETE",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                                // 'Content-Type': 'application/x-www-form-urlencoded',
+                                            },
+                                        })
+                                    })
+                            }
+                        });
+                    })
             })
 
         select_class.onchange = function () {
             if (select_class.value) {
                 var apiClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=A' + select_class.value;
-                console.log(apiClass)
             } else {
                 document.querySelector("#tbody").innerHTML = ``;
             }
@@ -121,7 +220,6 @@ for (var i = 0; i < grade_page.length; i++) {
                             return std
                         })
                         .then(function (s) {
-                            console.log(s)
 
                             var htmls = s.map(function (tb) {
                                 var stdGender
@@ -146,18 +244,90 @@ for (var i = 0; i < grade_page.length; i++) {
 
                             document.querySelector("#tbody").innerHTML = html;
 
-                        })
-                })
+                            return s;
 
-                .then(function () {
-                    document.querySelector('#info-student').setAttribute("src", "js/info-student.js")
+                        })
+                        .then(function (tb) {
+                            tb.forEach(tb => {
+                                var btnStudentId = '#btn-info-' + tb.id
+                                var btn_info_student = document.querySelector(btnStudentId)
+                                var info_student_alert = document.querySelector('#infoStudentModal')
+                                var info_student_modal = document.querySelectorAll('.modal-dialog')
+                                var button_cancel = document.querySelectorAll('.btn-secondary')
+                                var button_put_parent = document.querySelector('#btn-put-parent')
+                                var parentFullName = document.querySelector('#parentFullName')
+                                var parentGender = document.querySelector('#parentGender')
+                                var parentPhone = document.querySelector('#parentPhone')
+
+                                var apiFindParent = 'https://localhost:7256/api/StudentParent/child/' + tb.id
+
+
+                                btn_info_student.onclick = function () {
+
+                                    fetch(apiFindParent)
+                                        .then(function (reponse) {
+                                            return reponse.json()
+                                        })
+                                        .then(function (par) {
+                                            if (par.status) {
+                                                parentFullName.value = ''
+                                                parentPhone.value = ''
+                                                parentDateOfBirth.value = ''
+                                                parentGender.value = ''
+                                            } else if (par.gender == 0) {
+                                                parentGender.value = 'Nữ'
+                                            } else {
+                                                parentGender.value = 'Nam'
+                                            }
+                                            parentFullName.value = par.name
+                                            parentPhone.value = par.mobile
+                                            parentDateOfBirth.value = par.dob
+                                            return par
+                                        })
+                                        .then(function (par) {
+                                            button_put_parent.onclick = function () {
+
+                                                var data = {
+                                                    Name: parentFullName.value,
+                                                    Mobile: parentPhone.value,
+                                                    Gender: parentGender.value,
+                                                    DOB: parentDateOfBirth.value
+                                                }
+                                                var api_put_parent = 'https://localhost:7256/api/User/role/' + par.id
+                                                fetch(api_put_parent, {
+                                                    method: "PUT",
+                                                    headers: {
+                                                        "Content-Type": "application/json",
+                                                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                                                    },
+                                                    body: JSON.stringify(data),
+
+                                                })
+                                            }
+                                        })
+
+                                    info_student_alert.setAttribute("style", "display: block")
+                                    setTimeout(function () {
+                                        info_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
+                                    })
+                                    info_student_modal[4].setAttribute("style", "transform: translate(0, 0px);")
+                                }
+
+                                button_cancel[4].onclick = function () {
+                                    info_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")
+                                    setTimeout(function () {
+                                        info_student_alert.setAttribute("style", "display: none")
+                                    }, 150)
+                                }
+
+                            });
+                        })
                 })
         }
 
         select_year.onchange = function () {
             if (select_year.value) {
                 var apiClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=A' + select_class.value;
-                console.log(apiClass)
             } else {
                 document.querySelector("#tbody").innerHTML = ``;
             }
@@ -183,7 +353,6 @@ for (var i = 0; i < grade_page.length; i++) {
                             return std
                         })
                         .then(function (s) {
-                            console.log(s)
 
                             var htmls = s.map(function (tb) {
                                 var stdGender
@@ -208,6 +377,82 @@ for (var i = 0; i < grade_page.length; i++) {
 
                             document.querySelector("#tbody").innerHTML = html;
 
+                            return s;
+
+                        })
+                        .then(function (tb) {
+                            tb.forEach(tb => {
+                                var btnStudentId = '#btn-info-' + tb.id
+                                var btn_info_student = document.querySelector(btnStudentId)
+                                var info_student_alert = document.querySelector('#infoStudentModal')
+                                var info_student_modal = document.querySelectorAll('.modal-dialog')
+                                var button_cancel = document.querySelectorAll('.btn-secondary')
+                                var button_put_parent = document.querySelector('#btn-put-parent')
+                                var parentFullName = document.querySelector('#parentFullName')
+                                var parentGender = document.querySelector('#parentGender')
+                                var parentPhone = document.querySelector('#parentPhone')
+
+                                var apiFindParent = 'https://localhost:7256/api/StudentParent/child/' + tb.id
+
+
+                                btn_info_student.onclick = function () {
+
+                                    fetch(apiFindParent)
+                                        .then(function (reponse) {
+                                            return reponse.json()
+                                        })
+                                        .then(function (par) {
+                                            if (par.status) {
+                                                parentFullName.value = ''
+                                                parentPhone.value = ''
+                                                parentDateOfBirth.value = ''
+                                                parentGender.value = ''
+                                            } else if (par.gender == 0) {
+                                                parentGender.value = 'Nữ'
+                                            } else {
+                                                parentGender.value = 'Nam'
+                                            }
+                                            parentFullName.value = par.name
+                                            parentPhone.value = par.mobile
+                                            parentDateOfBirth.value = par.dob
+                                            return par
+                                        })
+                                        .then(function (par) {
+
+                                            button_put_parent.onclick = function () {
+                                                var data = {
+                                                    Name: parentFullName.value,
+                                                    Mobile: parentPhone.value,
+                                                    Gender: parentGender.value,
+                                                    DOB: parentDateOfBirth.value
+                                                }
+                                                var api_put_parent = 'https://localhost:7256/api/User/role/' + par.id
+                                                fetch(api_put_parent, {
+                                                    method: "PUT",
+                                                    headers: {
+                                                        "Content-Type": "application/json",
+                                                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                                                    },
+                                                    body: JSON.stringify(data),
+                                                })
+                                            }
+
+                                        })
+
+                                    info_student_alert.setAttribute("style", "display: block")
+                                    setTimeout(function () {
+                                        info_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
+                                    })
+                                    info_student_modal[4].setAttribute("style", "transform: translate(0, 0px);")
+                                }
+
+                                button_cancel[4].onclick = function () {
+                                    info_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")
+                                    setTimeout(function () {
+                                        info_student_alert.setAttribute("style", "display: none")
+                                    }, 150)
+                                }
+                            });
                         })
                 })
         }
