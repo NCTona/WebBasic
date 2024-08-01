@@ -1,7 +1,6 @@
 var grade_page = document.querySelectorAll('.collapse-item')
 var select_year = document.querySelector('#select-year')
-var dataCookie = document.cookie.split(';')
-var idCookie = dataCookie[0].split('=')
+var select_class = document.querySelector('#select-class')
 
 function Validator(options) {
     var formElementProfile = document.querySelector(options.formProfile);
@@ -62,7 +61,7 @@ function Validator(options) {
                         "DOB": formElementProfile.querySelector('#adminDateOfBirth').value
                     }
                     console.log(data)
-                    var api_put_admin = 'https://localhost:7256/api/User/role/' + idCookie[1]
+                    var api_put_admin = 'https://localhost:7256/api/User/role/' + idCookie
                     fetch(api_put_admin, {
                         method: "PUT",
                         headers: {
@@ -75,21 +74,15 @@ function Validator(options) {
                             return reponse.json()
                         })
                         .then(function (data) {
-                            if (data.status) {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Something went wrong!",
-                                });
-                            } else {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: "Success",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            }
+
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+
                         })
                 }
             }
@@ -170,24 +163,27 @@ function Validator(options) {
                             return reponse.json()
                         })
                         .then(function (data) {
-                            if (data.status) {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Something went wrong!",
-                                });
-                            } else {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: "Success",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            }
+
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+
+                            render_table_after_onchange()
                             return data
                         })
+                        .catch(function () {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Gmail is already exist!",
+                            });
+                        })
                         .then(function (std) {
+                            var std_id = std.id
                             var apiLinkParent = 'https://localhost:7256/api/StudentParent'
                             fetch(apiLinkParent, {
                                 method: "POST",
@@ -204,23 +200,48 @@ function Validator(options) {
                                 .then(function (reponse) {
                                     return reponse.json()
                                 })
-                                .then(function (data) {
-                                    if (data.status) {
-                                        Swal.fire({
-                                            icon: "error",
-                                            title: "Oops...",
-                                            text: "Something went wrong!",
-                                        });
-                                    } else {
-                                        Swal.fire({
-                                            position: "center",
-                                            icon: "success",
-                                            title: "Success",
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
+
+                                .then(function () {
+                                    for (var i = 0; i < grade_page.length; i++) {
+                                        if (grade_page[i].getAttribute("class") == "collapse-item active") {
+
+                                            var grade_view = i + 1;
+                                            apiFindIdClass = 'https://localhost:7256/api/Class/Grade/Year/Name?grade=' + grade_view + '&year=' + select_year.value + '&name=' + select_class.value
+                                            console.log(apiFindIdClass)
+                                        }
                                     }
+
+                                    fetch(apiFindIdClass)
+                                        .then(function (reponse) {
+                                            return reponse.json()
+                                        })
+                                        .then(function (data) {
+                                            var class_id = data[0].id
+                                            return class_id
+                                        })
+                                        .then(function (classId) {
+                                            console.log(std_id)
+                                            console.log(classId)
+                                            var apiLinkClass = 'https://localhost:7256/api/UserClass'
+                                            fetch(apiLinkClass, {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                                                },
+                                                body: JSON.stringify({
+                                                    "UserID": std_id,
+                                                    "ClassID": classId
+                                                }),
+
+                                            })
+                                                .then(function () {
+                                                    render_table_after_onchange()
+                                                })
+                                        })
                                 })
+
+
                         })
                 }
             }
@@ -277,6 +298,7 @@ function Validator(options) {
                 })
                 if (isValid) {
                     var grade;
+                    console.log(formElementClass.querySelector('#schedule-start').value)
                     for (var i = 0; i < grade_page.length; i++) {
                         if (grade_page[i].getAttribute("class") == "collapse-item active") {
                             grade = i + 1
@@ -295,12 +317,12 @@ function Validator(options) {
                         "TeacherID": formElementClass.querySelector('#teacher').value,
                         "IsActive": true,
                         "Grade": grade.toString(),
-                        "Year": select_year.value,
+                        "Year": formElementClass.querySelector('#schedule-start').value.split('-')[0],
                         "ScheduleDto": {
                             "DateType": boolean,
                             "Shift": formElementClass.querySelector('#shift').value,
                             "StartTime": formElementClass.querySelector('#schedule-start').value,
-                            "NumberOfSession": formElementClass.querySelector('#course').value,
+                            "NumOfSession": parseInt(formElementClass.querySelector('#course').value, 10),
                         },
                     }
                     console.log(data)
@@ -313,26 +335,21 @@ function Validator(options) {
                         },
                         body: JSON.stringify(data),
                     })
-                        .then(function (reponse) {
+                        .then(function(reponse){
                             return reponse.json()
                         })
-                        .then(function (data) {
-                            console.log(data)
-                            if (data.Status) {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "Something went wrong!",
-                                });
-                            } else {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: "Success",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            }
+                        .then(function () {
+
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+
+                            render_table()
+                            
                         })
                         .catch(function (err) {
                             Swal.fire({
@@ -416,17 +433,11 @@ function Validator(options) {
                         },
                         body: JSON.stringify(data),
                     })
-                    .then(function(reponse){
-                        return reponse.json()
-                    })
-                    .then(function(data){
-                        if(data.status){
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops...",
-                                text: "Something went wrong!",
-                              });
-                        } else {
+                        .then(function(reponse){
+                            return reponse.json()
+                        })
+                        .then(function () {
+
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -434,8 +445,20 @@ function Validator(options) {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                        }
-                    })
+
+                            render_parent()
+                            render_teacher()
+
+                        })
+                        .catch(function () {
+                            
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Gmail is already exist!",
+                            });
+
+                        })
                 }
             }
         })
@@ -511,17 +534,10 @@ function Validator(options) {
                         },
                         body: JSON.stringify(data),
                     })
-                    .then(function(reponse){
-                        return reponse.json()
-                    })
-                    .then(function(data){
-                        if(data.status){
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops...",
-                                text: "Something went wrong!",
-                              });
-                        } else {
+                        .then(function(reponse){
+                            return reponse.json()
+                        })
+                        .then(function () {
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -529,8 +545,16 @@ function Validator(options) {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                        }
-                    })
+                            render_parent()
+                            render_teacher()
+                        })
+                        .catch(function () {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Gmail is already exist!",
+                            });
+                        })
                 }
             }
         })

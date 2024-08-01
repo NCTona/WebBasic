@@ -70,33 +70,16 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Salary -->
-            <li class="nav-item">
-                <a class="nav-link" href="salary.html">
-                    <i class="fas fa-fw fa-money-bill "></i>
-                    <span>Salary</span></a>
-            </li>
-
             <!-- Nav Item - Payment -->
             <li class="nav-item active">
                 <a class="nav-link" href="payment.html">
-                    <i class="fas fa-fw fa-credit-card "></i>
+                    <i class="fas fa-fw fa-money-bill"></i>
                     <span>Payment</span></a>
             </li>
 
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
         </ul>
         <!-- End of Sidebar -->
@@ -153,64 +136,41 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme.
-                        The charts below have been customized - for further customization options, please visit the <a
-                            target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
-                            documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800" style="padding: 24px">Charts</h1>
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <div class="col-xl-8 col-lg-7">
-
-                            <!-- Area Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the area chart can be found in the
-                                    <code>/js/demo/chart-area-demo.js</code> file.
-                                </div>
-                            </div>
+                        <div class="col-xl-8 col-lg-7" style="padding-bottom: 24px;">
 
                             <!-- Bar Chart -->
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-4" style="height: 100%;">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Biểu đồ thanh toán</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
                                         <canvas id="myBarChart"></canvas>
                                     </div>
-                                    <hr>
-                                    Styling for the bar chart can be found in the
-                                    <code>/js/demo/chart-bar-demo.js</code> file.
+
                                 </div>
                             </div>
 
                         </div>
 
                         <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
+                        <div class="col-xl-4 col-lg-5" style="padding-bottom: 24px;">
+                            <div class="card shadow mb-4" style="height: 100%;">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê thanh toán</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
-                                    <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
+
                                 </div>
                             </div>
                         </div>
@@ -277,10 +237,13 @@
                         </span>
                     </div>
 
-                    <div class="input-container" style="display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: column;">
                         <label for="" style="overflow: hidden;">Giới tính</label>
-                        <input id="adminGender" class="form-input" type="text"
-                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                        <select id="adminGender" class="form-input" type="text"
+                            style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
+                        </select>
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
                     </div>
@@ -298,7 +261,8 @@
                         <input id="adminPhone" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert"
-                            style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
+                            style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)">
+                        </span>
                     </div>
 
                     <div class="modal-footer"
@@ -311,6 +275,9 @@
             </div>
         </div>
     </div>
+    
+    <!-- Auto login -->
+    <script src="js/login_session.js"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -342,8 +309,62 @@
     <!-- Insert frequently -->
     <script src="js/fakeApi.js"></script>
 
+    <!-- Validator -->
+    <script src="js/validator.js"></script>
+
     <!-- Profile modal -->
     <script src="js/profile.js"></script>
+
+    <script>
+        Validator({
+            formAddStudent: "#form-add-student",
+            formAddClass: "#form-add-class",
+            formProfile: "#form-profile",
+            formAddParent: "#form-add-parent",
+            formAddTeacher: "#form-add-teacher",
+            rules_profile: [
+                Validator.isFullName("#adminFullName"),
+                Validator.isGender("#adminGender"),
+                Validator.isDateOfBirth("#adminDateOfBirth"),
+                Validator.isPhone("#adminPhone"),
+            ],
+            rules_student: [
+                Validator.isFullName("#fullName"),
+                Validator.isGender("#gender"),
+                Validator.isDateOfBirth("#dateOfBirth"),
+                Validator.isPhone("#phone"),
+                Validator.isEmail("#email"),
+                Validator.isAddress('#address')
+            ],
+            rules_class: [
+                Validator.isClassName("#className"),
+                Validator.isTeacher("#teacher"),
+                Validator.isScheduleStart('#schedule-start'),
+                Validator.isScheduleDay('#schedule-day'),
+                Validator.isCourse('#course'),
+                Validator.isShift('#shift'),
+            ],
+            rules_parent: [
+                Validator.isFullName("#parentFullName"),
+                Validator.isGender("#parentGender"),
+                Validator.isDateOfBirth("#parentDateOfBirth"),
+                Validator.isPhone("#parentPhone"),
+                Validator.isEmail("#parentEmail"),
+                Validator.isAddress('#parentAddress')
+            ],
+            rules_teacher: [
+                Validator.isFullName("#teacherFullName"),
+                Validator.isGender("#teacherGender"),
+                Validator.isDateOfBirth("#teacherDateOfBirth"),
+                Validator.isPhone("#teacherPhone"),
+                Validator.isEmail("#teacherEmail"),
+                Validator.isAddress('#teacherAddress')
+            ],
+            onSubmit: function (data) {
+                data();
+            }
+        });
+    </script>
 
 </body>
 

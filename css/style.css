@@ -38,7 +38,7 @@ html {
     font-weight: 600;
     color: white;
     text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 #nav li a {
@@ -49,7 +49,7 @@ html {
 }
 
 #nav>li:hover>a {
-    color: #72fde1;
+    color: #72fdac;
     transform: translateY(-2px);
     cursor: pointer;
 }
@@ -73,7 +73,7 @@ html {
 }
 
 .search-button:hover .ti-github {
-    color: #72fde1;
+    color: #72fdac;
     cursor: pointer;
 }
 

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <script type=”text/JavaScript”>
+        function killCopy(e){
+            return false
+        }
+        function reEnable(){
+            return true
+        }
+        document.onselectstart=new Function (“return false”)
+            if (window.sidebar){
+            document.onmousedown=killCopy
+            document.onclick=reEnable
+        }
+        </script>
+    <title>Multilingo</title>
+</head>
+
+<!-- SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/ -->
+
+<body>
+
+    <div id="main">
+
+        <!-- Header -->
+        <div id="header">
+
+            <!-- Navigation -->
+            <ul id="nav">
+                <li>
+                    <i id="avatar" class="fas fa-user-circle unactive"></i>
+
+                    <ul id="subnav" style="display: none">
+                        <li id="user_profile">
+                            <i class="fas fa-user fa-sm fa-fw" style="line-height: 24px; width: 24px;"></i>
+                            Profile
+                        </li>
+                        <li id="user_logout">
+                            <i class="fas fa-sign-out-alt fa-sm"
+                                style="line-height: 24px; width: 24px; display: flex; justify-content: center;"></i>
+                            Logout
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- Logout alert -->
+        <div class="dialog" id="logout">
+            <div class="dialog_container" id="logout_alert">
+                <div class="header_dialog">
+                    <h3>Ready to leave?</h3>
+                    <b id="close_logout_dialog" class="close">X</b>
+                </div>
+                <div class="content_dialog">
+                    <p>Do you want to logout?</p>
+                </div>
+                <div class="footer_dialog">
+                    <button id="cancel_logout_dialog" class="btn">Cancel</button>
+                    <button id="confirm_logout" class="btn">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile dialog -->
+        <div class="dialog" id="profile">
+            <div class="dialog_container" id="profile_info">
+                <div class="header_dialog">
+                    <h3>Infomation</h3>
+                    <b id="close_profile_dialog" class="close">X</b>
+                </div>
+                <div class="content_dialog" style="display: flex; flex-direction: column;">
+                    <label>Họ tên</label>
+                    <input id="teacherFullName" type="text" readonly>
+                    <label>Giới tính</label>
+                    <input id="teacherGender" type="text" readonly>
+                    <label>Ngày sinh</label>
+                    <input id="teacherDateOfBirth" type="text" readonly>
+                    <label>Số điện thoại</label>
+                    <input id="teacherPhone" type="text" readonly>
+                </div>
+                <div class="footer_dialog">
+                    <button id="cancel_profile_dialog" class="btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div id="content">
+            <div id="content_container">
+                <div id="class_list">
+                    <div id="title">MANAGE</div>
+                    <div id="select">
+                        <input id="date" type="text" readonly>
+                        <select id="select_class">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <button id="confirm_attendance">Attendance</button>
+                </div>
+                <div id="pad_top"></div>
+                <div id="table_container">
+
+                    <div class="table_responsive">
+                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Function</th>
+                            </thead>
+                            <tbody id="tbody">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+                </div>
+                <div id="pad_bottom"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/user_dropdown.js"></script>
+
+    <script src="js/logout.js"></script>
+
+    <script src="js/user_profile.js"></script>
+
+    <script src="js/login_session.js"></script>
+
+    <script src="js/callApi.js"></script>
+
+</body>
+
+</html>

@@ -70,7 +70,11 @@ function Validator(options) {
 
                             .then(function (admin) {
                                 if (admin.token != undefined) {
-                                    document.cookie = `token=${std.token}`
+                                    document.cookie = `username=${document.querySelector('#inputUsername').value}`
+                                    document.cookie = `password=${document.querySelector('#inputPassword').value}`
+                                    document.cookie = `token=${admin.token}`
+                                    document.cookie = `id=${admin.id}`
+                                    document.cookie = `role=${admin.role}`
                                     Swal.fire({
                                         position: "center",
                                         icon: "success",

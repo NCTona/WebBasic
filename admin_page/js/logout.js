@@ -31,10 +31,10 @@ button_cancel[0].onclick = function () {
 
 button_logout.onclick = function () {
 
-    document.cookie = `username=; path=/`
-    document.cookie = `password=; path=/`
-    document.cookie = `token=; path=/`
-    document.cookie = `id=; path=/`
-    document.cookie = `role=; path=/`
-    window.location = "/index.html"
+    document.cookie = `username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`
+    document.cookie = `password=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`
+    document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`
+    document.cookie = `id=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`
+    document.cookie = `role=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`
+    window.location = "/"
 }

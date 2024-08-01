@@ -5,36 +5,71 @@ var button_cancel = document.querySelectorAll('.btn-secondary')
 
 var apiParent = 'https://localhost:7256/api/user/role?pageIndex=1&pageSize=5&sortBy=Id&SortDesc=true&role=3'
 
+render_parent()
 
-fetch(apiParent)
-    .then(function (reponse) {
-        return reponse.json()
-    })
-    .then(function (tc) {
-        var htmls = tc.map(function (tb) {
-            return `
+function check_class() {
+    if (!select_class.value || !select_year.value) {
+
+        add_student.onclick = function () {
+            console.log(!select_class.value, !select_year.value)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please add class!",
+            });
+        }
+
+    } else {
+        add_student.onclick = function () {
+            add_student_alert.setAttribute("style", "display: block")
+            setTimeout(function () {
+                add_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
+            })
+            add_student_modal[2].setAttribute("style", "transform: translate(0, 0px);")
+        }
+    
+        button_cancel[2].onclick = function () {
+            add_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")
+            setTimeout(function () {
+                add_student_alert.setAttribute("style", "display: none")
+            }, 150)
+        }    
+
+    }
+}
+
+function render_parent() {
+    fetch(apiParent)
+        .then(function (reponse) {
+            return reponse.json()
+        })
+        .then(function (tc) {
+            var htmls = tc.map(function (tb) {
+                return `
                 <option value="${tb.id}">${tb.name}</option>
             `
+            })
+
+
+            var html = htmls.join('');
+
+            document.querySelector("#parent").innerHTML = html;
+
         })
-
-
-        var html = htmls.join('');
-
-        document.querySelector("#parent").innerHTML = html;
-
-    })
-
-add_student.onclick = function () {
-    add_student_alert.setAttribute("style", "display: block")
-    setTimeout(function () {
-        add_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
-    })
-    add_student_modal[2].setAttribute("style", "transform: translate(0, 0px);")
 }
 
-button_cancel[2].onclick = function () {
-    add_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")
-    setTimeout(function () {
-        add_student_alert.setAttribute("style", "display: none")
-    }, 150)
-}
+    add_student.onclick = function () {
+        add_student_alert.setAttribute("style", "display: block")
+        setTimeout(function () {
+            add_student_alert.setAttribute("style", "display: block; opacity: 1; background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5));")
+        })
+        add_student_modal[2].setAttribute("style", "transform: translate(0, 0px);")
+    }
+
+    button_cancel[2].onclick = function () {
+        add_student_alert.setAttribute("style", "display: block ;background-image: linear-gradient(rgba(50, 50, 50, 0), rgba(50, 50, 50, 0))")
+        setTimeout(function () {
+            add_student_alert.setAttribute("style", "display: none")
+        }, 150)
+    }
+

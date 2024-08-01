@@ -4,26 +4,31 @@ var add_class_modal = document.querySelectorAll('.modal-dialog')
 var button_cancel = document.querySelectorAll('.btn-secondary')
 var apiTeacher = 'https://localhost:7256/api/user/role?pageIndex=1&pageSize=20&sortBy=Id&SortDesc=true&role=1'
 
-fetch(apiTeacher)
-    .then(function (reponse) {
-        return reponse.json()
-    })
-    .then(function (tc) {
-        var htmls = tc.map(function (tb) {
-            return `
+render_teacher()
+
+
+function render_teacher() {
+    fetch(apiTeacher)
+        .then(function (reponse) {
+            return reponse.json()
+        })
+        .then(function (tc) {
+            var htmls = tc.map(function (tb) {
+                return `
                 <option value="${tb.id}">${tb.name}</option>
             `
+            })
+
+            var html = htmls.join('');
+
+            document.querySelector("#teacher").innerHTML = html;
+
         })
 
-        var html = htmls.join('');
-
-        document.querySelector("#teacher").innerHTML = html;
-
-    })
-
-    .catch(function(err){
-        console.log(err)
-    })
+        .catch(function (err) {
+            console.log(err)
+        })
+}
 
 add_class.onclick = function () {
     add_class_alert.setAttribute("style", "display: block")

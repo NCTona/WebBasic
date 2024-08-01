@@ -76,30 +76,12 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Salary -->
-            <li class="nav-item">
-                <a class="nav-link" href="salary.html">
-                    <i class="fas fa-fw fa-money-bill "></i>
-                    <span>Salary</span></a>
-            </li>
-
             <!-- Nav Item - Payment -->
             <li class="nav-item">
                 <a class="nav-link" href="payment.html">
-                    <i class="fas fa-fw fa-credit-card "></i>
+                    <i class="fas fa-fw fa-bolt "></i>
                     <span>Payment</span></a>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -116,25 +98,8 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
-
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <div>
-                            <button class="btn-add" id="btn-add-teacher"
-                                style="border: none; background-color: #cdcdcd; color: rgb(139, 139, 139); border-radius: 4px; margin: 12px; padding: 8px; width: 128px; height: 42px;">Add
-                                teacher</button>
-
-                            <button class="btn-add" id="btn-add-parent"
-                                style="border: none; background-color: #cdcdcd; color: rgb(139, 139, 139); border-radius: 4px; margin: 12px; padding: 8px; height: 42px; width: 128px;">Add
-                                parent</button>
-                        </div>
+                    <ul class="navbar-nav ml-auto" style="width: 100%; justify-content: end;">
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -167,43 +132,51 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <div class="card shadow mb-4">
+
+                        <div class="card-header py-3"
+                            style="display: flex; justify-content: space-between; align-items: center; margin: 20px; overflow: hidden;">
+
+                            <div>
+                                <h1 class="h3 mb-0 text-gray-800">Quản lý đối tượng</h1>
+                            </div>
+
+                            <div style="overflow: hidden;">
+                                <button class="btn-add" id="btn-add-teacher"
+                                    style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; width: 128px; height: 42px;">Add
+                                    teacher</button>
+
+                                <button class="btn-add" id="btn-add-parent"
+                                    style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; height: 42px; width: 128px;">Add
+                                    parent</button>
+                                <button class="btn-add" id="btn-add-class"
+                                    style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; width: 128px; height: 42px;">Add
+                                    class</button>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3"
-                            style="display: flex; justify-content: space-between; align-items: center;">
+                            style="display: flex; justify-content: space-between; align-items: center; overflow: hidden; margin: 20px;">
                             <h6 class="m-0 font-weight-bold text-primary">
                                 <div>
-                                    <select name="Class" id="select-class"
-                                        style="border-radius: 4px; color: rgb(85, 85, 85); padding: 8px 12px; width: 128px; margin: 12px; height: 42px;">
-                                        <option value="1">Class 2.1</option>
-                                        <option value="2">Class 2.2</option>
-                                        <option value="3">Class 2.3</option>
-                                    </select>
-                                    <button id="btn-add-student" class="btn-add"
-                                        style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; height: 42px; width: 128px;">Add
-                                        student</button>
+                                    <h1 id="teacherName" class="h3 mb-0 text-gray-800">Giáo viên: </h1>
                                 </div>
                             </h6>
 
-                            <div>
+                            <div style="overflow: hidden;">
+                                <select name="Class" id="select-class"
+                                    style="border-radius: 4px; color: rgb(85, 85, 85); padding: 8px 12px; width: 128px; margin: 12px; height: 42px;">
+                                </select>
                                 <select name="Year" id="select-year"
                                     style="border-radius: 4px; color: rgb(85, 85, 85); padding: 8px 12px; margin: 12px; height: 42px; ;width: 128px;">
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
                                 </select>
-                                <button id="btn-add-class" class="btn-add"
-                                    style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; width: 128px; height: 42px;">Add
-                                    class</button>
-
+                                <button class="btn-add" id="btn-add-student"
+                                    style="border: none; background-color: #0f734f; color: aliceblue; border-radius: 4px; margin: 12px; padding: 8px; height: 42px; width: 128px;">Add
+                                    student</button>
                             </div>
-
 
                         </div>
                         <div class="card-body">
@@ -217,7 +190,8 @@
                                             <th>Date of birth</th>
                                             <th>Mobile</th>
                                             <th>Address</th>
-                                        </tr>
+                                            <th>Function</th>
+
                                     </thead>
                                     <tbody id="tbody">
 
@@ -289,11 +263,11 @@
                     </div>
 
                     <div style="display: flex; flex-direction: column;">
-                        <label for="" style="overflow: hidden;">Giáo viên</label>
+                        <label for="" style="overflow: hidden;">Giới tính</label>
                         <select id="adminGender" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <option value="1">Nam</option>
-                        <option value="0">Nữ</option>
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
                         </select>
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -344,8 +318,8 @@
                         <label for="" style="overflow: hidden;">Giới tính</label>
                         <select id="gender" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <option value="1">Nam</option>
-                        <option value="0">Nữ</option>
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
                         </select>
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -490,7 +464,7 @@
                 <form id="form-info-parent" style="display: flex; flex-direction: column; padding: 24px;">
                     <div class="input-container" style="display: flex; flex-direction: column;">
                         <label for="" style="overflow: hidden;">Họ và tên</label>
-                        <input id="parentFullName" class="form-input" type="text"
+                        <input id="infoParentFullName" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -498,10 +472,10 @@
 
                     <div style="display: flex; flex-direction: column;">
                         <label for="" style="overflow: hidden;">Giới tính</label>
-                        <select id="parentGender" class="form-input" type="text"
+                        <select id="infoParentGender" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <option value="1">Nam</option>
-                        <option value="0">Nữ</option>
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
                         </select>
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -509,7 +483,7 @@
 
                     <div class="input-container" style="display: flex; flex-direction: column;">
                         <label for="" style="overflow: hidden;">Ngày sinh</label>
-                        <input id="parentDateOfBirth" class="form-input" type="date"
+                        <input id="infoParentDateOfBirth" class="form-input" type="date"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -517,7 +491,7 @@
 
                     <div class="input-container" style="display: flex; flex-direction: column;">
                         <label for="" style="overflow: hidden;">Số điện thoại</label>
-                        <input id="parentPhone" class="form-input" type="text"
+                        <input id="infoParentPhone" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
                         <span class="alert"
                             style="padding: 0;height: 24px;font-style: italic;color: rgb(210, 100, 100)"> </span>
@@ -552,8 +526,8 @@
                         <label for="" style="overflow: hidden;">Giới tính</label>
                         <select id="parentGender" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <option value="1">Nam</option>
-                        <option value="0">Nữ</option>
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
                         </select>
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -617,11 +591,11 @@
                     </div>
 
                     <div style="display: flex; flex-direction: column;">
-                        <label for="" style="overflow: hidden;">Giáo viên</label>
+                        <label for="" style="overflow: hidden;">Giới tính</label>
                         <select id="teacherGender" class="form-input" type="text"
                             style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
-                        <option value="1">Nam</option>
-                        <option value="0">Nữ</option>
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
                         </select>
                         <span class="alert" style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                         </span>
@@ -670,9 +644,14 @@
         </div>
     </div>
 
+    <!-- Auto login -->
+    <script src="js/login_session.js"></script>
 
     <!-- Insert frequently -->
     <script src="js/fakeApi.js"></script>
+
+    <!-- Info student -->
+    <script id="info-student"></script>
 
     <!-- Dropdown user-->
     <script src="js/dropdown-user.js"></script>
@@ -682,9 +661,6 @@
 
     <!-- Profile modal -->
     <script src="js/profile.js"></script>
-
-    <!-- Info student -->
-    <script id="info-student"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -707,6 +683,7 @@
 
     <!-- Validator -->
     <script src="./js/validator.js"></script>
+
     <script>
         Validator({
             formAddStudent: "#form-add-student",

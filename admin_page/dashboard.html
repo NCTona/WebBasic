@@ -70,30 +70,11 @@
                 </div>
             </li>
 
-
-            <!-- Nav Item - Salary -->
-            <li class="nav-item">
-                <a class="nav-link" href="salary.html">
-                    <i class="fas fa-fw fa-money-bill "></i>
-                    <span>Salary</span></a>
-            </li>
-
             <!-- Nav Item - Payment -->
             <li class="nav-item">
                 <a class="nav-link" href="payment.html">
-                    <i class="fas fa-fw fa-credit-card "></i>
+                    <i class="fas fa-fw fa-bolt "></i>
                     <span>Payment</span></a>
-            </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
             </li>
 
             <!-- Divider -->
@@ -160,8 +141,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Số năm hoạt động</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -171,23 +152,25 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Opening class</div>
+                                            <div id="getClassName" class="h5 mb-0 font-weight-bold text-gray-800">A8
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -195,11 +178,13 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Đã thanh
+                                                toán
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$40,000
+                                                    </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -218,23 +203,25 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Chưa thanh toán</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$60,000</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
 
                     <!-- Content Row -->
@@ -247,7 +234,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Biểu đồ học phí</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -278,7 +265,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê học phí</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -301,13 +288,10 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fas fa-circle text-success"></i> Chưa đóng
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle text-info"></i> Đã đóng
                                         </span>
                                     </div>
                                 </div>
@@ -363,10 +347,13 @@
                                 </span>
                             </div>
 
-                            <div class="input-container" style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column;">
                                 <label for="" style="overflow: hidden;">Giới tính</label>
-                                <input id="adminGender" class="form-input" type="text"
-                                    style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px;">
+                                <select id="adminGender" class="form-input" type="text"
+                                    style="padding: 8px ;border: solid 2px #9d9d9d; border-radius: 4px">
+                                    <option value="0">Nữ</option>
+                                    <option value="1">Nam</option>
+                                </select>
                                 <span class="alert"
                                     style="padding: 0;height: 24px;font-style: italic;color:rgb(210, 100, 100)">
                                 </span>
@@ -401,6 +388,8 @@
                 </div>
             </div>
 
+            <!-- Auto login -->
+            <script src="js/login_session.js"></script>
 
             <!-- Page level plugins -->
             <script src="vendor/chart.js/Chart.min.js"></script>
@@ -425,9 +414,62 @@
             <!-- Insert frequently -->
             <script src="js/fakeApi.js"></script>
 
+            <!-- Validator -->
+            <script src="js/validator.js"></script>
+
             <!-- Profile modal -->
             <script src="js/profile.js"></script>
 
+            <script>
+                Validator({
+                    formAddStudent: "#form-add-student",
+                    formAddClass: "#form-add-class",
+                    formProfile: "#form-profile",
+                    formAddParent: "#form-add-parent",
+                    formAddTeacher: "#form-add-teacher",
+                    rules_profile: [
+                        Validator.isFullName("#adminFullName"),
+                        Validator.isGender("#adminGender"),
+                        Validator.isDateOfBirth("#adminDateOfBirth"),
+                        Validator.isPhone("#adminPhone"),
+                    ],
+                    rules_student: [
+                        Validator.isFullName("#fullName"),
+                        Validator.isGender("#gender"),
+                        Validator.isDateOfBirth("#dateOfBirth"),
+                        Validator.isPhone("#phone"),
+                        Validator.isEmail("#email"),
+                        Validator.isAddress('#address')
+                    ],
+                    rules_class: [
+                        Validator.isClassName("#className"),
+                        Validator.isTeacher("#teacher"),
+                        Validator.isScheduleStart('#schedule-start'),
+                        Validator.isScheduleDay('#schedule-day'),
+                        Validator.isCourse('#course'),
+                        Validator.isShift('#shift'),
+                    ],
+                    rules_parent: [
+                        Validator.isFullName("#parentFullName"),
+                        Validator.isGender("#parentGender"),
+                        Validator.isDateOfBirth("#parentDateOfBirth"),
+                        Validator.isPhone("#parentPhone"),
+                        Validator.isEmail("#parentEmail"),
+                        Validator.isAddress('#parentAddress')
+                    ],
+                    rules_teacher: [
+                        Validator.isFullName("#teacherFullName"),
+                        Validator.isGender("#teacherGender"),
+                        Validator.isDateOfBirth("#teacherDateOfBirth"),
+                        Validator.isPhone("#teacherPhone"),
+                        Validator.isEmail("#teacherEmail"),
+                        Validator.isAddress('#teacherAddress')
+                    ],
+                    onSubmit: function (data) {
+                        data();
+                    }
+                });
+            </script>
 </body>
 
 </html>

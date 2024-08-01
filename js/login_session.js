@@ -1,44 +1,53 @@
 var apiAdmin = 'https://localhost:7256/api/Account/login'
 
-var dataCookie = document.cookie.split(';')
-console.log(dataCookie)
-var usernameCookie = dataCookie[2].split('=')
-console.log(usernameCookie[1])
-var passwordCookie = dataCookie[3].split('=')
-console.log(passwordCookie[1])
+if (document.cookie[0]) {
 
-var data = {
-    "Email": usernameCookie[1],
-    "Password": passwordCookie[1]
+    var dataCookie = document.cookie.split('; ');
+
+    var result = {};
+
+    dataCookie.forEach(part => {
+        var [key, value] = part.split('=');
+        result[key.trim()] = value;
+    });
+
+    var usernameCookie = `${result.username}`;
+    var passwordCookie = `${result.password}`;
+    var tokenCookie = `${result.token}`;
+    var idCookie = `${result.id}`;
+    var roleCookie = `${result.role}`;
+
+    var data = {
+        "Email": usernameCookie,
+        "Password": passwordCookie
+    }
+
+    fetch(apiAdmin, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(function (reponse) {
+            return reponse.json();
+        })
+
+        .then(function (user) {
+
+            if (user.token != undefined) {
+                if (user.role == 0) {
+                    window.location.href = "./admin_page/dashboard.html"
+                } else if (user.role == 1) {
+                    window.location.href = "./user_page/teacher_page/attendance.html"
+                } else if (user.role == 2) {
+                    window.location.href = "./user_page/student_page/student_schedule.html"
+                } else if (user.role == 3) {
+                    window.location.href = "./user_page/parent_page/parent_payment.html"
+                }
+            } else {
+            }
+        })
 }
 
-fetch(apiAdmin, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: JSON.stringify(data)
-})
-    .then(function (reponse) {
-        return reponse.json();
-    })
-
-    .then(function (user) {
-        
-        if (user.token != undefined) {
-            if (user.role == 0) {
-                window.location.href = "./admin_page/dashboard.html"
-            } else if(user.role == 1){
-                // Link giáo viên
-                window.location.href = ""
-            } else if(user.role == 2){
-                // Link học sinh
-                window.location.href = ""
-            } else if(user.role == 3){
-                // Link phụ huynh
-                window.location.href = ""
-            }
-        } else {
-        }
-    })

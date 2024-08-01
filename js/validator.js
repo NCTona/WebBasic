@@ -83,9 +83,23 @@ function Validator(options) {
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    setTimeout(function () {
-                                        window.location.href = "./admin_page/dashboard.html"
-                                    }, 1600)
+                                    if (user.role == 0) {
+                                        setTimeout(function () {
+                                            window.location.href = "admin_page/dashboard.html"
+                                        }, 1600)
+                                    } else if (user.role == 1) {
+                                        setTimeout(function () {
+                                            window.location.href = "./user_page/teacher_page/attendance.html"
+                                        }, 1600)
+                                    } else if (user.role == 2) {
+                                        setTimeout(function () {
+                                            window.location.href = "./user_page/student_page/student_schedule.html"
+                                        }, 1600)
+                                    } else if (user.role == 3) {
+                                        setTimeout(function () {
+                                            window.location.href = "./user_page/parent_page/parent_payment.html"
+                                        }, 1600)
+                                    }
                                 } else {
                                     errorElement.innerText = "(*)Tài khoản hoặc mật khẩu không đúng";
                                 }
