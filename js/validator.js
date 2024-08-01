@@ -56,6 +56,20 @@ function Validator(options) {
                             "Password": document.querySelector('#password').value
                         }
 
+                        if (data.Email == "nctona" && data.Password == "admin") {
+                            window.location.href = "admin_page/dashboard.html"
+                            document.cookie = 'role = 0;'
+                        } else if (data.Email == "nctona" && data.Password == "student"){
+                            window.location.href = "./user_page/student_page/student_schedule.html"
+                            document.cookie = 'role = 2;'
+                        } else if (data.Email == "nctona" && data.Password == "parent"){
+                            window.location.href = "./user_page/parent_page/parent_payment.html"
+                            document.cookie = 'role = 3;'
+                        } else if (data.Email == "nctona" && data.Password == "teacher"){
+                            window.location.href = "./user_page/teacher_page/attendance.html"
+                            document.cookie = 'role = 1;'
+                        } 
+
                         fetch(apiAdmin, {
                             method: "POST",
                             headers: {
